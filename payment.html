@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Xiong Mao - Payment</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="xiongmao.css">
+<script src="menu.js"></script>
+
+<style>
+#intro {height: 500px;
+		background: url("Assets/intro.png");
+		background-repeat: no-repeat;
+        background-size: 1400px 500px;
+        background-position: center;
+        vertical-align: middle;}
+#huanying {padding-bottom: 20px;
+	       margin-left: auto;
+	       margin-right: auto;
+           display: block;}
+#welcome {padding: 50px;
+	      margin-top: 0px;
+	      background-color: rgba(50,50,50,0.5);
+	      text-align: center;}
+
+
+
+/* Create three equal columns that floats next to each other */
+
+.wrapper {
+	padding-top: 30px;
+	text-align: center;
+	height: 320px;
+}
+.column-left{ 
+	float: left;
+	width: 33%;
+	min-height: 320px; 
+	/* text-align: center; */
+}
+.column-right{ float: right; width: 33%; }
+.column-center{ display: inline-block; width: 33%; }
+
+table		{
+				width:80%; 
+				margin:auto;
+				/* border-spacing: 2px; */
+			}
+
+td, th		{padding:10px;}
+
+
+label		{
+				float:left;
+				display:block;
+				text-align:right;
+				width:40%;
+				padding-right:10px;
+			}
+			
+input		{
+				display:block;
+				margin-bottom:20px;
+			}
+
+.button {
+	float: left;
+}
+
+#pay {
+	width:10%; 
+	margin:auto;
+
+}
+</style>
+</head>
+<body>
+<div id="title-left">
+	<img src="Assets/logo.png" id="logo" width="204" height="103">
+</div>
+<div id="title-right">
+	<header>
+		<h1>Xiong Mao</h1>
+	</header>
+	<nav>
+		<a href="home.html">Home</a>
+		<a href="menu.html">Menu</a>
+		<a href="reservation.html">Reservation</a>
+		<a href="delivery.html">Delivery</a>
+		<a href="event.html">Event</a>
+		<a href="contact.html">Contact</a>
+		<a href="login_register.html">Login/Register</a>
+	</nav>
+</div>
+<div id="intro">
+	<p id="welcome">
+		<img src="Assets/[new image to replace].png" id="huanying" width="1100" height="100">
+
+  </p>
+</div>
+
+
+<div class="wrapper">
+	<div class="column-left">
+		<h2>Order Summary</h2>
+		<table>
+			<tbody>
+				<tr>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Quantity</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+		
+	<div class="column-center">
+		<h2>Delivery Address</h2>
+
+		<form name="applicantInfo" method="get" id="applicantInfo" action="show_get.php" onsubmit="return validateForm()">
+			<!--<form name="applicantInfo" method="get" id="applicantInfo" >-->
+
+				<label for="name"> Name * </label> 
+				<input type="text" name ="name" id="name" required>
+
+				<label for="phone"> Phone * </label>
+				<input type="number" name ="phone" id="phone" required>
+
+				<label for="email"> Email * </label>
+				<input type="email" name ="email" id="email" required>
+				
+				<label for="address"> Address * </label>
+				<input type="text" name ="address" id="address" required>
+				
+				<label for="postcode"> Postcode * </label>
+				<input type="number" name ="postcode" id="postcode" required>
+			
+		</form>
+
+	</div>
+		
+	<div class="column-right">
+		<h2>Payment</h2>
+		<p>Please choose your payment method: </p>
+
+		<table>
+			<tbody>
+				<tr>
+					<td><input type="radio" class="button" name="button" checked> VISA</td>
+					<td><input type="radio" class="button" name="button" > eNETS</td>
+				</tr>
+				<tr>
+					<td><input type="radio" class="button" name="button" >MasterCard</td>
+					<td><input type="radio" class="button" name="button" > PayPal</td>
+				</tr>
+				<tr>
+					<td><input type="radio" class="button" name="button" >Union Pay</td>
+					<td><input type="radio" class="button" name="button" > Alipay</td>
+				</tr>
+				
+			</tbody>
+		</table>
+		<input type="submit" id="pay" value="Pay"> 
+
+
+	</div>
+		
+</div>
+
+
+<footer>
+	<small>Nanyang Technological University, #01-01 Nanyang Center, 50 Nanyang Walk, Singapore 639929<br>
+		Tel: 8888 6666 | Email: <a href="mailto:xiongmao@xiongmao.com">xiongmao@xiongmao.com</a><br>
+		<i>Copyright &copy; 2018 Xiong Mao, Inc.<br></i></small>
+</footer>
+</body>
+</html>
