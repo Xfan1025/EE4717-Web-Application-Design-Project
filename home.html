@@ -1,21 +1,13 @@
+<!--display text on mouse over-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Xiong Mao - Home</title>
 <meta charset="utf-8">
+<link rel="stylesheet" href="xiongmao.css">
 <style>
-#logo {filter: invert(100%);}
-#title-left {float: left;
-			 width: 210px;
-			 height: 111px; 
-			 text-align: center;
-			 vertical-align: middle;} 
-#title-right {height: 110px;
-	          margin-left: 200px;
-	          padding-left: 20px;
-	          padding-top: 1px;} 
 #intro {height: 500px;
-		background: url("intro.png");
+		background: url("Assets/intro.png");
 		background-repeat: no-repeat;
         background-size: 1400px 500px;
         background-position: center;
@@ -30,28 +22,28 @@
 	      text-align: center;}
 #display {padding-top: 30px;
 	      text-align: center;}
-#display img{display: inline-block;
-             margin-left: 15px;
-             margin-right: 15px;}
+#display img {display: inline-block;
+              margin-left: 15px;
+              margin-right: 15px;}
 #service {padding-top: 30px;
-	      text-align: center;}
-#service img{display: inline;}
-#service a{display: inline;
-           text-decoration: none;
-           color: #FFFFFF;}
-body {background-color: #000000;
-      color: #FFFFFF;}
-nav a {margin-right: 50px;
-	   text-decoration: none;	
-	   font-weight: bold;
-	   color: #FFFFFF;}
-footer {padding: 20px;
-		text-align: center;}
+	      text-align: center;
+	      height: 210px;}
+#service a {display: inline;
+            text-decoration: none;
+            color: #FFFFFF;}
+.column-img {width: 300px;
+	         margin-left: 15px;
+	         display: inline-block;}
+.column-txt {width: 140px; 
+	         padding-left: 10px;
+             text-align: left;
+             vertical-align: top;
+             display: inline-block; }
 </style> 
 </head>
 <body>
 <div id="title-left">
-	<img src="logo.png" id="logo" width="204" height="103">
+	<img src="Assets/logo.png" id="logo" width="204" height="103">
 </div>
 <div id="title-right">
 	<header>
@@ -69,28 +61,42 @@ footer {padding: 20px;
 </div>
 <div id="intro">
 	<p id="welcome">
-		<img src="welcome.png" id="huanying" width="1100" height="100">
+		<img src="Assets/welcome.png" id="huanying" width="1100" height="100">
 		<font size="8"><strong>WELCOME</strong></font><br>
         <font size="4">Xiong Mao, Singapore's most authentic Chinese restaurant.<br>
         Situated in the heart of original Nanyang garden.</font>
     </p>
 </div>
 <div id="display">
-	<img src="display1.png" width="200" height="200">
-	<img src="display2.png" width="200" height="200">
-	<img src="display3.png" width="200" height="200">
-	<img src="display4.png" width="200" height="200">
-	<img src="display5.png" width="200" height="200">
-	<img src="display6.png" width="200" height="200">
+	<img src="Assets/display1.png" width="200" height="200">
+	<img src="Assets/display2.png" width="200" height="200">
+	<img src="Assets/display3.png" width="200" height="200">
+	<img src="Assets/display4.png" width="200" height="200">
+	<img src="Assets/display5.png" width="200" height="200">
+	<img src="Assets/display6.png" width="200" height="200">
 </div>
 <div id="service">
-	<img src="service1.png" width="308" height="200" style="display: inline;">
-	<h2><a href="reservation.html">Reservation</a></h2>
-    <!--<p>Make reservations for dinning!</p>-->
-	<img src="service2.png" width="308" height="200" style="display: inline;">
-	<h2><a href="delivery.html">Delivery</a></h2>
-	<img src="service3.png" width="308" height="200" style="display: inline;">
-	<h2><a href="event.html">Event</a></h2>
+	<div class="column-img">
+		<img src="Assets/service1.png" width="300" height="200">
+	</div>
+	<div class="column-txt">
+		<h2><a href="reservation.html">Reservation</a></h2>
+		<p>Want to pre-arrange dining? Come and make a reservation with us!</p>
+	</div>
+	<div class="column-img">
+		<img src="Assets/service2.png" width="300" height="200">
+	</div>
+	<div class="column-txt">
+		<h2><a href="delivery.html">Delivery</a></h2>
+		<p>Want to enjoy spicy hot at home? Try our delivery service!</p>
+	</div>
+	<div class="column-img">
+		<img src="Assets/service3.png" width="300" height="200">
+	</div>
+	<div class="column-txt">
+		<h2><a href="event.html">Event</a></h2>
+		<p>Want to experience special dining? Book our seasonal events!</p>
+	</div>
 </div>
 <footer>
 	<small>Nanyang Technological University, #01-01 Nanyang Center, 50 Nanyang Walk, Singapore 639929<br>
