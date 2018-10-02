@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Xiong Mao - Menu</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="xiongmao.css">
+<link rel="stylesheet" href="menu.css">
+
+<script src="menu.js"></script>
+
+<style>
+#header {text-align: center;
+        vertical-align: middle;}
+
+
+
+</style>
+</head>
+<body>
+<div id="title-left">
+	<img src="Assets/logo.png" id="logo" width="204" height="103">
+</div>
+<div id="title-right">
+	<header>
+		<h1>Xiong Mao</h1>
+	</header>
+	<nav>
+		<a href="home.html">Home</a>
+		<a href="menu.html">Menu</a>
+		<a href="reservation.html">Reservation</a>
+		<a href="delivery.html">Delivery</a>
+		<a href="event.html">Event</a>
+		<a href="contact.html">Contact</a>
+		<a href="login_register.html">Login/Register</a>
+	</nav>
+</div>
+<div id="header">
+		<img src="Assets/headerMenu.png" width="1400" height="300">
+</div>
+
+<div id="wrapper">
+	<div id="menu_nav">
+		<ul>
+			<li> 		
+				<div class="dropdown">
+					<button onclick="foodDropdown()" class="dropbtn">Food Menu</button>
+					<div id="foodDropdown" class="dropdown-content">
+						<a href="">Content for food menu. To be connected to database.</a>
+					</div>
+				</div>
+			</li>
+			<li> 		
+				<div class="dropdown">
+					<button onclick="drinkDropdown()" class="dropbtn">Drink Menu</button>
+					<div id="drinkDropdown" class="dropdown-content">
+						<a href="">Content for drink menu. To be connected to database.</a>
+					</div>
+				</div>
+			</li>
+			<li> 		
+				<div class="dropdown">
+					<button onclick="offerDropdown()" class="dropbtn">Special Offering</button>
+					<div id="offerDropdown" class="dropdown-content">
+						<a href="">Content for special. To be connected to database.</a>
+					</div>
+				</div>
+			</li>
+
+		</ul>
+	</div>
+
+	<div id="content">
+		<h2>Menu</h2>
+    We will display the complete menu here.
+
+		<!-- <div class="dropdown">
+			<button onclick="foodDropdown()" class="dropbtn">Food Menu</button>
+			<div id="foodDropdown" class="dropdown-content">
+				<a href="">Content for food menu. To be connected to database.</a>
+			</div>
+		</div>
+	
+		<div class="dropdown">
+			<button onclick="drinkDropdown()" class="dropbtn">Drink Menu</button>
+			<div id="drinkDropdown" class="dropdown-content">
+				<a href="">Content for drink menu. To be connected to database.</a>
+			</div>
+		</div>
+
+		<div class="dropdown">
+			<button onclick="offerDropdown()" class="dropbtn">Special Offering</button>
+			<div id="offerDropdown" class="dropdown-content">
+				<a href="">Content for special offer. To be connected to database.</a>
+			</div>
+		</div> -->
+		
+	</div>
+</div>
+
+<footer>
+	<small>Nanyang Technological University, #01-01 Nanyang Center, 50 Nanyang Walk, Singapore 639929<br>
+		Tel: 8888 6666 | Email: <a href="mailto:xiongmao@xiongmao.com">xiongmao@xiongmao.com</a><br>
+		<i>Copyright &copy; 2018 Xiong Mao, Inc.<br></i></small>
+</footer>
+</body>
+</html>
