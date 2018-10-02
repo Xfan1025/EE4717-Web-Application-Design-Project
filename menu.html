@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Xiong Mao - Menu</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="xiongmao.css">
+<script src="menu.js"></script>
+
+<style>
+#intro {height: 500px;
+		background: url("Assets/intro.png");
+		background-repeat: no-repeat;
+        background-size: 1400px 500px;
+        background-position: center;
+        vertical-align: middle;}
+#huanying {padding-bottom: 20px;
+	       margin-left: auto;
+	       margin-right: auto;
+           display: block;}
+#welcome {padding: 50px;
+	      margin-top: 0px;
+	      background-color: rgba(50,50,50,0.5);
+	      text-align: center;}
+
+#wrapper	{
+				margin-right:auto;
+				margin-left:auto;
+				width:80%;
+				color: rgb(215, 47, 63);
+				/* min-width:700px; */
+			}
+#menu_nav {
+    text-align: center;
+    /* float: left; */
+    width: 200px;
+		height: 200px;
+    padding-top: 10px;
+    font-style: bold;
+	position: fixed;
+	display: inline-block;
+}
+
+#menu_nav ul {
+    list-style-type: none;
+}
+#menu_nav li {
+	padding: 20px 0px;
+}
+
+
+#content	{
+				padding: 10px 20px 30px 20px;
+				margin-left:150px;
+
+			}
+
+
+/* CSS for dropdown */
+.dropbtn {
+    background-color: rgb(215, 47, 63);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: rgb(205, 181, 145);
+}
+
+.dropdown {
+    position: relative;
+    /*display: inline-block;*/
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+</style>
+</head>
+<body>
+<div id="title-left">
+	<img src="Assets/logo.png" id="logo" width="204" height="103">
+</div>
+<div id="title-right">
+	<header>
+		<h1>Xiong Mao</h1>
+	</header>
+	<nav>
+		<a href="home.html">Home</a>
+		<a href="menu.html">Menu</a>
+		<a href="reservation.html">Reservation</a>
+		<a href="delivery.html">Delivery</a>
+		<a href="event.html">Event</a>
+		<a href="contact.html">Contact</a>
+		<a href="login_register.html">Login/Register</a>
+	</nav>
+</div>
+<div id="intro">
+	<p id="welcome">
+		<img src="Assets/[new image to replace].png" id="huanying" width="1100" height="100">
+
+  </p>
+</div>
+
+<div id="wrapper">
+	<div id="menu_nav">
+		<ul>
+			<li> FOOD MENUS </li>
+			<li> DRINK MENUS </li>
+			<li> SPECIAL OFFERS </li>
+		</ul>
+	</div>
+
+	<div id="content">
+		<div class="dropdown">
+			<button onclick="foodDropdown()" class="dropbtn">Food Menu</button>
+			<div id="foodDropdown" class="dropdown-content">
+				<a href="">Content for food menu. To be connected to database.</a>
+			</div>
+		</div>
+	
+		<div class="dropdown">
+			<button onclick="drinkDropdown()" class="dropbtn">Drink Menu</button>
+			<div id="drinkDropdown" class="dropdown-content">
+				<a href="">Content for drink menu. To be connected to database.</a>
+			</div>
+		</div>
+
+		<div class="dropdown">
+			<button onclick="offerDropdown()" class="dropbtn">Special Offering</button>
+			<div id="offerDropdown" class="dropdown-content">
+				<a href="">Content for special offer. To be connected to database.</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer>
+	<small>Nanyang Technological University, #01-01 Nanyang Center, 50 Nanyang Walk, Singapore 639929<br>
+		Tel: 8888 6666 | Email: <a href="mailto:xiongmao@xiongmao.com">xiongmao@xiongmao.com</a><br>
+		<i>Copyright &copy; 2018 Xiong Mao, Inc.<br></i></small>
+</footer>
+</body>
+</html>
