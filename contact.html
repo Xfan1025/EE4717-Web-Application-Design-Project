@@ -3,33 +3,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Xiong Mao - Reservation</title>
+<title>Xiong Mao - Contact</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="xiongmao.css">
 <style>
 #header {text-align: center;
 	     vertical-align: middle;}
 #contact {text-align: center;}
-#info {padding-left: 30px;
-	   width: 500px;
-	   text-align: left;
+#info {width: 600px;
+	   text-align: right;
 	   display: inline-block;}
-#form {margin-left:0px;
-	   width: 800px;
-	   text-align: center;
+#form {width: 600px;
+	   text-align: left;
 	   vertical-align: top;
        display: inline-block;}
-#left {width:390px;
-       display: inline-block;}
-#right {width:390px;
-	    vertical-align: top;
-        display: inline-block;}
-h2 {color:#FF476F;}
+h2, h3 {color:#FF476F;}
 form {line-height: 150%;}
 label {float: left;
 	   text-align: right; 
 	   padding-right: 10px;
-	   width: 45%;
+	   width: 15%;
 	   display: block;}  
 input, select, textarea {margin-left: 20px;
 	                     text-align: left;
@@ -61,14 +54,14 @@ input, select, textarea {margin-left: 20px;
 	</div>
 	<div id="info">
 		<img src="Assets/map.png" width="300" height="250">
-		<p>Xiong Mao<br><br>
+		<p><h3>Xiong Mao</h3>
 			Nanyang Technological University, <br>
 			#01-01 Nanyang Center, <br>
 			50 Nanyang Walk, <br>
 			Singapore 639929.<br><br>
 			Tel: 8888 6666<br>
-			Email: xiongmao@xiongmao.com<br>
-			Opening Hours: 11:00 - 23:00
+			Email: <a href="mailto:xiongmao@xiongmao.com">xiongmao@xiongmao.com</a><br>
+			Opening Hours: 11:00 - 23:00</p>
 	</div>
 	<div id="form">
 		<form method="post" action="show_post.php" id="info">
@@ -81,9 +74,9 @@ input, select, textarea {margin-left: 20px;
   				<input type="text" name="cttName" id="cttName" required><br>
   				<label for="cttEmail">* E-mail:</label>
   				<input type="email" name="cttEmail" id="cttEmail" required><br>
-				<label for="cttComment">Comment:</label>
-				<textarea name="cttComment" id="cttComment" rows="4" cols="18" required=""></textarea><br>
-				<input id="cttSubmit" type="submit" value="Submit" style="margin-left: 165px;">
+				<label for="cttComment">* Comment:</label>
+				<textarea name="cttComment" id="cttComment" rows="8" cols="18" required=""></textarea><br>
+				<input id="cttSubmit" type="submit" value="Submit" style="margin-left: 100px;">
 		</form>
 	</div>
 </div>
