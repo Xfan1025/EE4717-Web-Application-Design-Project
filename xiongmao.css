@@ -2,23 +2,26 @@
 	filter: invert(100%);
 }
 #title-left {
-	float: left;
 	width: 210px;
 	height: 111px; 
 	text-align: center;
 	vertical-align: middle;
+	display: inline-block;
 } 
 #title-right {
+	width: 1150px;
 	height: 110px;
-	margin-left: 200px;
-	padding-left: 20px;
+    padding-left: 20px;
 	padding-top: 1px;
 	text-align: left;
+	vertical-align: middle;
+	display: inline-block;
 } 
 body {
 	background-color: #000000;
     color: #FFFFFF;
 	min-width: 1400px;
+	text-align: center;
 }
 nav a {
 	margin-right: 50px;
