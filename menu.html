@@ -1,20 +1,117 @@
+<!--validation at cart when update-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Xiong Mao - Menu</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="xiongmao.css">
-<link rel="stylesheet" href="menu.css">
-
-<script src="menu.js"></script>
-
 <style>
-#header {text-align: center;
-        vertical-align: middle;}
+#header {
+	text-align: center;
+	vertical-align: middle;
+}
+#wrapper {
+	text-align: center;
+}
+#menu {
+	/* Problem in align in two columns without float */
+	/* float: left;  */
+	height: 1000px;
+	width: 65%;
+	text-align: center;
+	vertical-align: top;
+	margin-right: 10px;
+	display: inline-block;
+}
+
+#menu h3 {
+	text-align: left;
+}
+.product td {
+	text-align: left;
+	vertical-align: left;
+	padding: auto;	
+}
+
+.btn {
+	border: none;
+	background: none;
+	float: right;
+	text-align: center; 
+	vertical-align: center;
+	font-size: 80%;
+}
 
 
+h2 {
+	text-align: left;
+}
+h3 {
+	padding:5px;
+	color: black;
+	background-color: #FF476F;
+}
+h4 {
+	color: #FF476F;
+}
 
+table {
+	width: 95%; 
+	margin: auto;
+}    
 </style>
+<script>
+	function foldMeat() { //Not work for default with "display: none"
+    	var x = document.getElementById("meat");
+		var y = document.getElementById("btnMeat");
+    	if (x.style.display === "none") {
+        	x.style.display = "block";
+			y.value = "-";
+			console.log("if y="+y.value);
+    	} 
+		else {
+    		x.style.display = "none";
+			y.value = "+";
+			console.log("else y="+y.value);
+    	}
+	}
+	function foldVege() {
+    	var x = document.getElementById("vege");
+		var y = document.getElementById("btnVege");
+    	if (x.style.display === "none") {
+        	x.style.display = "block";
+			y.value = "-";
+    	} 
+		else {
+        	x.style.display = "none";
+			y.value = "+";
+    	}
+	}
+	function foldAlcohol() {
+    	var x = document.getElementById("alcohol");
+		var y = document.getElementById("btnAlcohol");
+    	if (x.style.display === "none") {
+    		x.style.display = "block";
+			y.value = "-";
+    	} 
+		else {
+        	x.style.display = "none";
+			y.value = "+";
+    	}
+	}
+	function foldTea() {
+    	var x = document.getElementById("tea");
+		var y = document.getElementById("btnTea");
+    	if (x.style.display === "none") {
+    		x.style.display = "block";
+			y.value = "-";
+    	} 
+		else {
+        	x.style.display = "none";
+			y.value = "+";
+    	}
+	}	
+</script>
 </head>
 <body>
 <div id="title-left">
@@ -34,77 +131,76 @@
 		<a href="login_register.html">Login/Register</a>
 	</nav>
 </div>
-<div id="header">
-		<img src="Assets/headerMenu.png" width="1400" height="300">
-
-</div>
 
 <div id="wrapper">
-	<div id="menu_nav">
-		<ul>
-			<li> 		
-				<div class="dropdown">
-					<button onclick="foodDropdown()" class="dropbtn">Food Menu</button>
-					<div id="foodDropdown" class="dropdown-content">
-						<a href="">Content for food menu. To be connected to database.</a>
-					</div>
-				</div>
-			</li>
-			<li> 		
-				<div class="dropdown">
-					<button onclick="drinkDropdown()" class="dropbtn">Drink Menu</button>
-					<div id="drinkDropdown" class="dropdown-content">
-						<a href="">Content for drink menu. To be connected to database.</a>
-					</div>
-				</div>
-			</li>
-			<li> 		
-				<div class="dropdown">
-					<button onclick="offerDropdown()" class="dropbtn">Special Offering</button>
-					<div id="offerDropdown" class="dropdown-content">
-						<a href="">Content for special. To be connected to database.</a>
-					</div>
-				</div>
-			</li>
-
-
-		</ul>
+	<div id="header">
+		<img src="Assets/headerMenu.png" width="1400" height="300">
 	</div>
+	<div id="menu">
+		<h2>Food Menu</h2>
+		<h3>Meat<input type="button" class="btn" id="btnMeat" value="-" onclick="foldMeat();"></h3>
+		<table id="meat" class="product">
+			<tr>
+				<td><h4>Sliced Beef with Black Pepper Sauce</h4></td>
+			</tr>
+			<tr>
+				<td><h4>Double Cooked Pork with Chinese Leek</h4></td>
+			</tr>
+			<tr>
+				<td><h4>Spicy Chicken</h4></td>
+			</tr>
+			<tr>
+				<td><h4>Fish Filets in Hot Chili Oil</h4></td>
+			</tr>						
+		</table>
+		<h3>Vegetables<input type="button" class="btn" id="btnVege" value="-" onclick="foldVege();"></h3>
+		<table id="vege" class="product">
+			<tr>
+				<td><h4>Egg Plant with Minced Chicken and Sichuan Chilli Sauce</h4></td>
+			</tr>
+			<tr>
+				<td><h4>Lettuce in Oyster Sauce</h4></td>
+			</tr>
+		</table>
 
-	<div id="content">
-		<h2>Menu</h2>
-    We will display the complete menu here.
+		<h2>Drink Menu</h2>
+		<h3>Alcohol<input type="button" class="btn" id="btnAlcohol" value="-" onclick="foldAlcohol();"></h3>
+		<table id="alcohol" class="product">
+			<tr>
+				<td><h4>Alcohol1</h4></td>
+			</tr>
+			<tr>
+				<td><h4>Alcohol2</h4></td>
+			</tr>
+		</table>
+		<h3>Tea<input type="button" class="btn" id="btnTea" value="-" onclick="foldTea();"></h3>
+		<table id="tea" class="product">
+			<tr>
+				<td><h4>tea1</h4></td>
+			</tr>
+			<tr>
+				<td><h4>tea2</h4></td>
+			</tr>	
+		</table>
 
-		<!-- <div class="dropdown">
-
-			<button onclick="foodDropdown()" class="dropbtn">Food Menu</button>
-			<div id="foodDropdown" class="dropdown-content">
-				<a href="">Content for food menu. To be connected to database.</a>
-			</div>
-		</div>
-	
-		<div class="dropdown">
-			<button onclick="drinkDropdown()" class="dropbtn">Drink Menu</button>
-			<div id="drinkDropdown" class="dropdown-content">
-				<a href="">Content for drink menu. To be connected to database.</a>
-			</div>
-		</div>
-
-		<div class="dropdown">
-			<button onclick="offerDropdown()" class="dropbtn">Special Offering</button>
-			<div id="offerDropdown" class="dropdown-content">
-				<a href="">Content for special offer. To be connected to database.</a>
-			</div>
-		</div> -->
-		
+		<h2>Special Offering</h2>
+		<table id="offer" class="product">
+			<tr>
+				<td><h4>Offer1</h4></td>
+			</tr>
+			<tr>
+				<td><h4>Offer2</h4></td>
+			</tr>
+		</table>
 
 	</div>
 </div>
 
+</div>
 <footer>
 	<small>Nanyang Technological University, #01-01 Nanyang Center, 50 Nanyang Walk, Singapore 639929<br>
 		Tel: 8888 6666 | Email: <a href="mailto:xiongmao@xiongmao.com">xiongmao@xiongmao.com</a><br>
-		<i>Copyright &copy; 2018 Xiong Mao, Inc.<br></i></small>
+		<i>Copyright &copy; 2018 Xiong Mao, Inc.<br></i></small>	
 </footer>
 </body>
 </html>
