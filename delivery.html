@@ -1,0 +1,281 @@
+<!--validation at cart when update-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Xiong Mao - Delivery</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="xiongmao.css">
+<style>
+#header {
+	text-align: center;
+	vertical-align: middle;
+}
+#delivery {
+	text-align: center;
+}
+#menu {
+	/* Problem in align in two columns without float */
+	float: left; 
+	height: 1000px;
+	width: 65%;
+	text-align: center;
+	vertical-align: top;
+	margin-right: 10px;
+	display: inline-block;
+}
+#cart {
+	height: 1000px;
+	width: 30%;
+	text-align: center;
+	vertical-align: top;
+	display: inline-block;
+}
+#summary {
+	height: 450px;
+	text-align: center;
+	vertical-align: top;
+}
+#total {
+	height: 50px;
+	vertical-align: bottom;
+}
+#menu h3 {
+	text-align: left;
+}
+.product td {
+	text-align: left;
+	vertical-align: center;
+	padding: 0px 5px;	
+}
+.product input {
+	width: 30px;
+} 
+.btn {
+	border: none;
+	background: none;
+	float: right;
+	text-align: center; 
+	vertical-align: center;
+	font-size: 80%;
+}
+#cart td, th {
+	padding-left: 30px;
+	padding-right: 30px;
+} 
+#amount {
+    background-color: transparent;
+    border: 0px solid;
+    width: 15%;
+	color: white;
+	font-weight: bold;
+	font-size: 100%;
+	text-align: center;
+	vertical-align: bottom;
+}
+h3 {
+	padding:5px;
+	color: black;
+	background-color: #FF476F;
+}
+h4 {
+	color: #FF476F;
+}
+
+table {
+	width: 95%; 
+	margin: auto;
+}    
+</style>
+<script>
+	function checkQty(){
+		var qty = document.getElementsByClassName("qty");
+		for (var i = 0; i <= 1; i++){
+			if ((qty[i].value<0)||(qty[i].value%1!=0)){
+				alert("The qty is not valid.\n" + "It must be a positive integer.");
+				qty[i].focus();
+				qty[i].select();
+				console.log("Error:"+i+"="+qty[i].value);
+				return false;
+		    }
+		}
+	}
+	function foldMeat() { //Not work for default with "display: none"
+    	var x = document.getElementById("meat");
+		var y = document.getElementById("btnMeat");
+    	if (x.style.display === "none") {
+        	x.style.display = "block";
+			y.value = "-";
+			console.log("if y="+y.value);
+    	} 
+		else {
+    		x.style.display = "none";
+			y.value = "+";
+			console.log("else y="+y.value);
+    	}
+	}
+	function foldVege() {
+    	var x = document.getElementById("vege");
+		var y = document.getElementById("btnVege");
+    	if (x.style.display === "none") {
+        	x.style.display = "block";
+			y.value = "-";
+    	} 
+		else {
+        	x.style.display = "none";
+			y.value = "+";
+    	}
+	}
+	function foldDrink() {
+    	var x = document.getElementById("drink");
+		var y = document.getElementById("btnDrink");
+    	if (x.style.display === "none") {
+    		x.style.display = "block";
+			y.value = "-";
+    	} 
+		else {
+        	x.style.display = "none";
+			y.value = "+";
+    	}
+	}
+</script>
+</head>
+<body>
+<div id="title-left">
+	<img src="Assets/logo.png" id="logo" width="204" height="103">
+</div>
+<div id="title-right">
+	<header>
+		<h1>Xiong Mao</h1>
+	</header>
+	<nav>
+		<a href="home.html">Home</a>
+		<a href="menu.html">Menu</a>
+		<a href="reservation.html">Reservation</a>
+		<a href="delivery.html">Delivery</a>
+		<a href="event.html">Event</a>
+		<a href="contact.html">Contact</a>
+		<a href="login_register.html">Login/Register</a>
+	</nav>
+</div>
+<div id="delivery">
+	<div id="header">
+		<img src="Assets/headerEvent.png" width="1400" height="300">
+	</div>
+	<div id="menu">
+		<h3>Meat<input type="button" class="btn" id="btnMeat" value="-" onclick="foldMeat();"></h3>
+		<table id="meat" class="product">
+			<col width="20%">
+			<col width="30%">
+			<col width="20%">
+			<col width="30%">
+			<tr>
+				<td><img src="Assets/delivery1.jpg" width="180" height="120"></td>
+				<td>
+					<h4>Sliced Beef with Black Pepper Sauce</h4>
+					<label>Quantity: </label><input type="number" id="delivery1" class="qty" value="0" min="0" step="1" onchange="checkQty();">
+					<p>Price: S$20.00</p><br>
+				</td>
+				<td><img src="Assets/delivery2.jpg" width="180" height="120"></td>
+				<td>
+					<h4>Double Cooked Pork with Chinese Leek</h4>
+					<label>Quantity: </label><input type="number" id="delivery2" class="qty" value="0" min="0" step="1" onchange="checkQty();">
+					<p>Price: S$16.00</p><br>
+				</td>
+			</tr>
+			<tr>
+				<td><img src="Assets/delivery3.jpeg" width="180" height="120"></td>
+				<td>
+					<h4>Spicy Chicken</h4>
+					<label>Quantity: </label><input type="number" id="delivery3" class="qty" value="0" min="0" step="1" onchange="checkQty();">
+					<p>Price: S$18.00</p><br>
+				</td>
+				<td><img src="Assets/delivery4.jpg" width="180" height="120"></td>
+				<td>
+					<h4>Fish Filets in Hot Chili Oil</h4>
+					<label>Quantity: </label><input type="number" id="delivery4" class="qty" value="0" min="0" step="1" onchange="checkQty();">
+					<p>Price: S$22.00</p><br>
+				</td>
+			</tr>
+		</table>
+		<h3>Vegetables<input type="button" class="btn" id="btnVege" value="-" onclick="foldVege();"></h3>
+		<table id="vege" class="product">
+			<col width="20%">
+			<col width="30%">
+			<col width="20%">
+			<col width="30%">
+			<tr>
+				<td><img src="Assets/delivery5.jpg" width="180" height="120"></td>
+				<td>
+					<h4>Egg Plant with Minced Chicken and Sichuan Chilli Sauce</h4>
+					<label>Quantity: </label><input type="number" id="delivery5" class="qty" value="0" min="0" step="1" onchange="checkQty();">
+					<p>Price: S$10.00</p><br>
+				</td>
+				<td><img src="Assets/delivery6.jpeg" width="180" height="120"></td>
+				<td>
+					<h4>Lettuce in Oyster Sauce</h4>
+					<label>Quantity: </label><input type="number" id="delivery2" class="qty" value="0" min="0" step="1" onchange="checkQty();">
+					<p>Price: S$8.00</p><br>
+				</td>
+			</tr>
+		</table>
+		<h3>Drinks<input type="button" class="btn" id="btnDrink" value="-" onclick="foldDrink();"></h3>
+		<table id="drink" class="product">
+			<col width="20%">
+			<col width="30%">
+			<col width="20%">
+			<col width="30%">
+			<tr>
+				<td><img src="Assets/delivery1.jpg" width="180" height="120"></td>
+				<td>
+					<h4>Sliced Beef with Black Pepper Sauce</h4>
+					<label>Quantity: </label><input type="number" id="delivery1" class="qty" value="0" min="0" step="1" onchange="checkQty();">
+					<p>Price: S$20.00</p><br>
+				</td>
+				<td><img src="Assets/delivery2.jpg" width="180" height="120"></td>
+				<td>
+					<h4>Double Cooked Pork with Chinese Leek</h4>
+					<label>Quantity: </label><input type="number" id="delivery2" class="qty" value="0" min="0" step="1" onchange="checkQty();">
+					<p>Price: S$16.00</p><br>
+				</td>
+			</tr>
+			<tr>
+				<td><img src="Assets/delivery3.jpeg" width="180" height="120"></td>
+				<td>
+					<h4>Spicy Chicken</h4>
+					<label>Quantity: </label><input type="number" id="delivery3" class="qty" value="0" min="0" step="1" onchange="checkQty();">
+					<p>Price: S$18.00</p><br>
+				</td>
+				<td><img src="Assets/delivery4.jpg" width="180" height="120"></td>
+				<td>
+					<h4>Fish Filets in Hot Chili Oil</h4>
+					<label>Quantity: </label><input type="number" id="delivery4" class="qty" value="0" min="0" step="1" onchange="checkQty();">
+					<p>Price: S$22.00</p><br>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+	<div id="cart">
+		<div id="summary">
+			<h3>Shopping Cart</h3>
+			<table>
+				<tr>
+					<th>Event</th>
+					<th>Price</th>
+					<th>Quantity</th>
+				</tr>
+			</table>
+		</div>
+		<div id="total">
+			<p><strong>Total: S$ <input type="text" id="amount" value="0.00" onfocus="this.blur(); "></strong></p>
+			<input type="submit" id="eventCheckout" value="Check Out" style="width: 80px;">
+		</div>
+	</div>
+</div>
+<footer>
+	<small>Nanyang Technological University, #01-01 Nanyang Center, 50 Nanyang Walk, Singapore 639929<br>
+		Tel: 8888 6666 | Email: <a href="mailto:xiongmao@xiongmao.com">xiongmao@xiongmao.com</a><br>
+		<i>Copyright &copy; 2018 Xiong Mao, Inc.<br></i></small>	
+</footer>
+</body>
+</html>
