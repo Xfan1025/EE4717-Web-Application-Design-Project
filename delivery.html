@@ -12,21 +12,16 @@
 }
 #delivery {
 	text-align: center;
+	display: inline-block;
+	height: auto;
 }
 #menu {
-	/* Problem in align in two columns without float */
-	float: left; 
-	height: 1000px;
-	width: 65%;
-	text-align: center;
-	vertical-align: top;
+	width: 800px;
 	margin-right: 10px;
 	display: inline-block;
 }
 #cart {
-	height: 1000px;
-	width: 30%;
-	text-align: center;
+	width: 500px;
 	vertical-align: top;
 	display: inline-block;
 }
@@ -41,6 +36,20 @@
 }
 #menu h3 {
 	text-align: left;
+}
+#cart td, th {
+	padding-left: 30px;
+	padding-right: 30px;
+} 
+#amount {
+    background-color: transparent;
+    border: 0px solid;
+    width: 15%;
+	color: white;
+	font-weight: bold;
+	font-size: 100%;
+	text-align: center;
+	vertical-align: bottom;
 }
 .product td {
 	text-align: left;
@@ -58,19 +67,12 @@
 	vertical-align: center;
 	font-size: 80%;
 }
-#cart td, th {
-	padding-left: 30px;
-	padding-right: 30px;
-} 
-#amount {
-    background-color: transparent;
-    border: 0px solid;
-    width: 15%;
-	color: white;
-	font-weight: bold;
-	font-size: 100%;
+body {
 	text-align: center;
-	vertical-align: bottom;
+}
+footer {
+	column-span: all;
+	width: 100%
 }
 h3 {
 	padding:5px;
@@ -80,7 +82,6 @@ h3 {
 h4 {
 	color: #FF476F;
 }
-
 table {
 	width: 95%; 
 	margin: auto;
@@ -157,10 +158,10 @@ table {
 		<a href="login_register.html">Login/Register</a>
 	</nav>
 </div>
+<div id="header">
+	<img src="Assets/headerEvent.png" width="1400" height="300">
+</div>
 <div id="delivery">
-	<div id="header">
-		<img src="Assets/headerEvent.png" width="1400" height="300">
-	</div>
 	<div id="menu">
 		<h3>Meat<input type="button" class="btn" id="btnMeat" value="-" onclick="foldMeat();"></h3>
 		<table id="meat" class="product">
@@ -225,36 +226,35 @@ table {
 			<col width="20%">
 			<col width="30%">
 			<tr>
-				<td><img src="Assets/delivery1.jpg" width="180" height="120"></td>
+				<td><img src="Assets/delivery7.png" width="180" height="120"></td>
 				<td>
-					<h4>Sliced Beef with Black Pepper Sauce</h4>
+					<h4>Bai Mu Dan White Peony Tea</h4>
 					<label>Quantity: </label><input type="number" id="delivery1" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$20.00</p><br>
+					<p>Price: S$5.00</p><br>
 				</td>
-				<td><img src="Assets/delivery2.jpg" width="180" height="120"></td>
+				<td><img src="Assets/delivery8.png" width="180" height="120"></td>
 				<td>
-					<h4>Double Cooked Pork with Chinese Leek</h4>
+					<h4>Oolong Tea</h4>
 					<label>Quantity: </label><input type="number" id="delivery2" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$16.00</p><br>
+					<p>Price: S$4.50</p><br>
 				</td>
 			</tr>
 			<tr>
-				<td><img src="Assets/delivery3.jpeg" width="180" height="120"></td>
+				<td><img src="Assets/delivery9.png" width="180" height="120"></td>
 				<td>
-					<h4>Spicy Chicken</h4>
+					<h4>Sweet-Sour Plum Juice</h4>
 					<label>Quantity: </label><input type="number" id="delivery3" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$18.00</p><br>
+					<p>Price: S$3.50</p><br>
 				</td>
-				<td><img src="Assets/delivery4.jpg" width="180" height="120"></td>
+				<td><img src="Assets/delivery10.png" width="180" height="120"></td>
 				<td>
-					<h4>Fish Filets in Hot Chili Oil</h4>
+					<h4>Traditional Chinese Liquor</h4>
 					<label>Quantity: </label><input type="number" id="delivery4" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$22.00</p><br>
+					<p>Price: S$11.00</p><br>
 				</td>
 			</tr>
 		</table>
 	</div>
-</div>
 	<div id="cart">
 		<div id="summary">
 			<h3>Shopping Cart</h3>
