@@ -1,3 +1,3 @@
-# EE4717-Web-Application-Design-Project
+# Ongoing Project for Web Design Course
 
-Images are from the Internet for visual results only.
+**Images and texts are from the Internet and they are used for completing the project only.**
