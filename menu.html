@@ -12,7 +12,35 @@
 }
 #wrapper {
 	text-align: center;
+	height: auto;
+
 }
+
+#menu_nav {
+	float: left;
+
+	text-align: left;
+	/* float: left; */
+	width: 200px;
+	height: 200px;
+	padding-top: 10px;
+	margin-left: 180px;
+    /* padding-left: 20px; */
+    padding-top: 1px;
+	font-style: bold;
+	color: #FF476F;
+	font-size: 18px;
+	position: fixed;
+	height: auto;
+
+}
+#menu_nav ul {
+list-style-type: none;
+}
+#menu_nav li {
+padding: 20px 0px;
+}
+
 #menu {
 	/* Problem in align in two columns without float */
 	/* float: left;  */
@@ -20,13 +48,19 @@
 	width: 65%;
 	text-align: center;
 	vertical-align: top;
+	margin-left: 200px;
+    padding-left: 50px;
+    padding-top: 1px;
 	margin-right: 10px;
 	display: inline-block;
+	height: auto;
+
 }
 
 #menu h3 {
 	text-align: left;
 }
+
 .product td {
 	text-align: left;
 	vertical-align: left;
@@ -135,6 +169,21 @@ table {
 <div id="wrapper">
 	<div id="header">
 		<img src="Assets/headerMenu.png" width="1400" height="300">
+	</div>
+
+	<div id="menu_nav">
+		<ul>
+			<li>
+				Food Menu
+			</li>
+			<li>
+				Drink Menu
+			</li>
+			<li>
+				Special Offering
+			</li>
+		</ul>
+
 	</div>
 	<div id="menu">
 		<h2>Food Menu</h2>
