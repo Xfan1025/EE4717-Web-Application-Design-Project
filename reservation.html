@@ -1,4 +1,3 @@
-<!--form validation-->
 <!--alert confirmation, update database-->
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +53,52 @@ input, select, textarea {
 	text-align: left;
 	display: block;
 }	             
-</style>
+</style> 
+<script>
+	function checkName(){
+		var name = document.getElementById("rsvName");
+	    var nameRegExp = /^[A-Za-z]+\s?[A-Za-z]*$/;
+		var nameValid = nameRegExp.test(name.value);
+   		if (nameValid != true) {
+			alert("The name is not valid.\n" + "It should contain only alphabet characters and space.");
+			name.focus();
+			name.select();
+			return false;
+		}
+	}
+	function checkPhone(){
+		var phone = document.getElementById("rsvPhone");
+	    var phoneRegExp = /^\d+$/;
+		var phoneValid = phoneRegExp.test(phone.value);
+		console.log("before if");
+    	if (phoneValid != true) {
+			alert("The phone number is not valid.\n" + "It should contain only digits.");
+			phone.focus();
+			phone.select();
+			return false;
+		}
+	}
+	function checkDate(){
+		var date = document.getElementById("rsvDate");
+		var dateCurrent = new Date();
+		var dateSelect = new Date(date.value);
+   		if (dateSelect <= dateCurrent){
+			alert("The date is not valid.\n" + "The start date cannot be from today and the past.");
+			date.focus();
+			date.select();
+			return false;
+		}
+	}
+	function checkPax(){
+		var pax = document.getElementById("rsvPax");
+  	    if ((pax.value<=0)||(pax.value>8)||(pax.value%1!=0)){
+			alert("The age is not valid.\n" + "It must be a positive integer between 1-8.");
+			pax.focus();
+			pax.select();
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 <div id="title-left">
@@ -102,13 +146,13 @@ input, select, textarea {
 					<option value="Ms.">Ms.</option>
 				</select><br>
   				<label for="rsvName">* Name:</label>
-  				<input type="text" name="rsvName" id="rsvName" required><br>
+  				<input type="text" id="rsvName" required><br>
   				<label for="rsvPhone">* Phone:</label>
-  				<input type="text" name="rsvPhone" id="rsvPhone" required><br>
+  				<input type="text" id="rsvPhone" required><br>
   				<label for="rsvEmail">* E-mail:</label>
-  				<input type="email" name="rsvEmail" id="rsvEmail" required><br>
+  				<input type="email" id="rsvEmail" required><br>
   				<label for="rsvDate">* Date:</label>
-				<input type="date" name="rsvDate" id="rsvDate" required><br>
+				<input type="date" id="rsvDate" required><br>
 			</div>
 			<div id="right">
 				<label for="rsvTime">* Time:</label>
@@ -120,10 +164,10 @@ input, select, textarea {
 					<option value="19:00">19:00</option>
 				</select><br>
 				<label for="rsvPax">* Pax:</label>
-				<input type="number" id="rsvPax" value="1" required><br>
+				<input type="number" id="rsvPax" value="1" min="1" max="8" step="1" required><br>
 				<label for="rsvComment">Comment:</label>
-				<textarea name="rsvComment" id="rsvComment" rows="4" cols="18"></textarea><br>
-				<input type="submit" id="rsvSubmit" value="Submit" style="margin-left: 165px;">
+				<textarea id="rsvComment" rows="4" cols="18"></textarea><br>
+				<input type="submit" id="rsvSubmit" value="Submit" style="margin-left: 165px;" onclick="checkName();checkPhone();checkDate();checkPax();">
 			</div>	
 		</form>
 	</div>
