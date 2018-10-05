@@ -1,4 +1,3 @@
-<!--form validation-->
 <!--alert confirmation, update database-->
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +43,19 @@ input, select, textarea {
 	display: block;
 }	             
 </style>
+<script>
+	function checkName(){
+		var name = document.getElementById("cttName");
+	    var nameRegExp = /^[A-Za-z]+\s?[A-Za-z]*$/;
+		var nameValid = nameRegExp.test(name.value);
+   		if (nameValid != true) {
+			alert("The name is not valid.\n" + "It should contain only alphabet characters and space.");
+			name.focus();
+			name.select();
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 <div id="title-left">
@@ -92,7 +104,7 @@ input, select, textarea {
   				<input type="email" name="cttEmail" id="cttEmail" required><br>
 				<label for="cttComment">* Comment:</label>
 				<textarea name="cttComment" id="cttComment" rows="8" cols="18" required=""></textarea><br>
-				<input id="cttSubmit" type="submit" value="Submit" style="margin-left: 100px;">
+				<input id="cttSubmit" type="submit" value="Submit" style="margin-left: 100px;" onclick="checkName();">
 		</form>
 	</div>
 </div>

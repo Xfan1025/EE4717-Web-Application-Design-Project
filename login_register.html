@@ -42,6 +42,30 @@ input, select {
 	display: inline-block;
 }	             
 </style>
+<script>
+	function checkFname(){
+		var fname = document.getElementById("regFname");
+	    var nameRegExp = /^[A-Za-z]+$/;
+		var nameValid = nameRegExp.test(name.value);
+   		if (nameValid != true) {
+			alert("The first name is not valid.\n" + "It should contain only alphabet characters.");
+			fname.focus();
+			fname.select();
+			return false;
+		}
+	}
+	function checkLname(){
+		var lname = document.getElementById("regLname");
+	    var nameRegExp = /^[A-Za-z]+$/;
+		var nameValid = nameRegExp.test(lname.value);
+   		if (nameValid != true) {
+			alert("The last name is not valid.\n" + "It should contain only alphabet characters.");
+			lname.focus();
+			lname.select();
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 <div id="title-left">
@@ -84,14 +108,14 @@ input, select {
 					<option value="Ms.">Ms.</option>
 				</select><br>
   				<label for="regFname">* First Name:</label>
-  				<input type="text" name="regFname" id="regFname" required><br>
+  				<input type="text" id="regFname" required><br>
 				<label for="regLname">* Last Name:</label>
-  				<input type="text" name="regLname" id="regLname" required><br>
+  				<input type="text" id="regLname" required><br>
 				<label for="regEmail">* E-mail:</label>
-  				<input type="email" name="regEmail" id="regEmail" required><br>
+  				<input type="email" id="regEmail" required><br>
 				<label for="regPassword">* Password:</label>
-				<input type="password" name="regPassword" id="regPassword" required><br>
-				<input id="regSubmit" type="submit" value="Submit">
+				<input type="password" id="regPassword" required><br>
+				<input id="regSubmit" type="submit" value="Submit" onclick="checkFname();checkLname();">
 		</form>
 	</div>
 </div>
