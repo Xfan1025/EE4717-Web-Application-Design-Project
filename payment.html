@@ -13,25 +13,31 @@
 		text-align: center;
         vertical-align: middle;
 }
-.wrapper {
+#wrapper {
 	padding-top: 30px;
 	text-align: center;
-	height: 320px;
+	display: inline-block;
+	height: auto;
 }
 /* Create three equal columns that floats next to each other */
-.column-left { 
-	float: left;
-	width: 33%;
-	min-height: 320px; 
-	/* text-align: center; */
+#column-left { 
+	width: 400px;
+	min-height: 320px;
+	text-align: center;
+	display: inline-block;
+	vertical-align: top;
 }
-.column-right {
-	float: right; 
-	width: 33%;
+#column-right {
+	width: 400px;
+	text-align: center;
+	vertical-align: top;
+	display: inline-block;
 }
-.column-center {
+#column-center {
 	display: inline-block; 
-	width: 33%;
+	width: 400px;
+	text-align: center;
+	vertical-align: top;
 }
 .button {
 	float: left;
@@ -117,8 +123,8 @@ input {
 <div id="header">
   <img src="Assets/headerPayment.png" width="1400" height="300">
 </div>
-<div class="wrapper">
-	<div class="column-left">
+<div id="wrapper">
+	<div id="column-left">
 		<h2>Order Summary</h2>
 		<table>
 			<tr>
@@ -128,7 +134,7 @@ input {
 			</tr>
 		</table>
 	</div>
-	<div class="column-center">
+	<div id="column-center">
 		<h2>Delivery Address</h2>
 		<form name="applicantInfo" method="get" id="applicantInfo" action="show_get.php">
 			<label for="name">* Name:</label> 
@@ -142,7 +148,7 @@ input {
 			<label for="postcode">* Postcode:</label>
 			<input type="text" id="payPostcode" required>
 	</div>	
-	<div class="column-right">
+	<div id="column-right">
 		<h2>Payment</h2>
 		<p>Please choose your payment method: </p>
 		<table>
