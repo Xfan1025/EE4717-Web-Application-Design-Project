@@ -43,18 +43,17 @@ input, select {
 }	             
 </style>
 <script>
-	function checkFname(){
+	function checkInput(){
 		var fname = document.getElementById("regFname");
 	    var nameRegExp = /^[A-Za-z]+$/;
-		var nameValid = nameRegExp.test(name.value);
+		var nameValid = nameRegExp.test(fname.value);
    		if (nameValid != true) {
 			alert("The first name is not valid.\n" + "It should contain only alphabet characters.");
 			fname.focus();
 			fname.select();
 			return false;
 		}
-	}
-	function checkLname(){
+
 		var lname = document.getElementById("regLname");
 	    var nameRegExp = /^[A-Za-z]+$/;
 		var nameValid = nameRegExp.test(lname.value);
@@ -64,7 +63,35 @@ input, select {
 			lname.select();
 			return false;
 		}
+	
+		// try use javascript to validate password match
+
+// 	var password = document.getElementById("regPassword"), confirm_password = document.getElementById("regPasswordConfirm");
+
+// function validatePassword(){
+// 	if(password.value != confirm_password.value) {
+// 		confirm_password.setCustomValidity("Passwords Don't Match");
+// 	} else {
+// 		confirm_password.setCustomValidity('');
+// 	}
+// }
+	
 	}
+
+	// try use javascript to validate password match
+
+	// var password = document.getElementById("regPassword"), confirm_password = document.getElementById("regPasswordConfirm");
+
+	// function validatePassword(){
+	// 	if(password.value != confirm_password.value) {
+	// 		confirm_password.setCustomValidity("Passwords Don't Match");
+	// 	} else {
+	// 		confirm_password.setCustomValidity('');
+	// 	}
+	// }
+
+	// password.onchange = validatePassword;
+	// confirm_password.onkeyup = validatePassword;
 </script>
 </head>
 <body>
@@ -91,31 +118,33 @@ input, select {
 	</div>
 	<div id="login">
 		<h2>Login</h2>
-		<form method="post" action="show_post.php" id="info">
+		<form method="post" action="registration/login.php" id="info"> <!-- maybe add input checking here -->
   				<label for="logEmail">* E-mail:</label>
-  				<input type="email" name="logEmail" id="logEmail" required><br>
+  				<input type="email" name="user_email" id="logEmail" required><br>
 				<label for="logPassword">* Password:</label>
-				<input type="password" name="logPassword" id="logPassword" required><br>
+				<input type="password" name="user_password" id="logPassword" required><br>
 				<input id="logSubmit" type="submit" value="Submit">
 		</form>
 	</div>
 	<div id="register">
 		<h2>Register</h2>
-		<form method="post" action="show_post.php" id="info">
+		<form method="post" action="registration/register.php" id="info" onsubmit="return checkInput();">
 				<label for="regSalulation">* Salulation:</label>
 				<select>
 					<option value="Mr.">Mr.</option>
 					<option value="Ms.">Ms.</option>
 				</select><br>
   				<label for="regFname">* First Name:</label>
-  				<input type="text" id="regFname" required><br>
+  				<input type="text" id="regFname" name="user_firstName" required><br>
 				<label for="regLname">* Last Name:</label>
-  				<input type="text" id="regLname" required><br>
+  				<input type="text" id="regLname" name="user_lastName" required><br>
 				<label for="regEmail">* E-mail:</label>
-  				<input type="email" id="regEmail" required><br>
+  				<input type="email" id="regEmail" name="user_email" required><br>
 				<label for="regPassword">* Password:</label>
-				<input type="password" id="regPassword" required><br>
-				<input id="regSubmit" type="submit" value="Submit" onclick="checkFname();checkLname();">
+				<input type="password" id="regPassword" name="user_password" placeholder="Password" required><br>
+				<label for="regPasswordConfirm">* Confirm:</label>
+				<input type="password" id="regPasswordConfirm" name="user_password_confirm" placeholder="Confirm your Password" required><br>				
+				<input id="regSubmit" type="submit" value="Submit">
 		</form>
 	</div>
 </div>
