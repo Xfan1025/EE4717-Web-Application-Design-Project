@@ -1,4 +1,13 @@
-<!--validation at cart when update-->
+<?php
+session_start();
+//Check account status: logged-in or not
+if (!isset($_SESSION['user_id'])){
+    echo '<script language="javascript">';
+    echo "alert('Members only! Please log in to access the page.');";
+    echo "window.location.href = 'registration/register.php';";
+    echo '</script>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,8 +56,7 @@
 	width: 30px;
 } 
 #cart td, th {
-	padding-left: 30px;
-	padding-right: 30px;
+	padding-bottom: 10px;
 } 
 #amount {
     background-color: transparent;
@@ -72,24 +80,11 @@ table {
 	margin: auto;
 }    
 </style>
-<script>
-	function checkQty(){
-		var qty = document.getElementsByClassName("qty");
-		for (var i = 0; i <= 1; i++){
-			if ((qty[i].value<0)||(qty[i].value%1!=0)){
-				alert("The qty is not valid.\n" + "It must be a positive integer.");
-				qty[i].focus();
-				qty[i].select();
-				console.log("Error:"+i+"="+qty[i].value);
-				return false;
-		    }
-		}
-	}
-</script>
+<script src="event.js"></script>
 </head>
 <body>
 <div id="title-left">
-	<img src="Assets/logo.png" id="logo" width="204" height="103">
+	<img src="assets/logo.png" id="logo" width="204" height="103">
 </div>
 <div id="title-right">
 	<header>
@@ -100,24 +95,24 @@ table {
 		<a href="menu.html">Menu</a>
 		<a href="reservation.html">Reservation</a>
 		<a href="delivery.html">Delivery</a>
-		<a href="event.html">Event</a>
+		<a href="event.php">Event</a>
 		<a href="contact.html">Contact</a>
 		<a href="registration/register.php">Account</a>
 	</nav>
 </div>
 <div id="booking">
 	<div id="header">
-		<img src="Assets/headerEvent.png" width="1400" height="300">
+		<img src="assets/headerEvent.png" width="1400" height="300">
 	</div>
 	<div id="event">
 		<table id="info">
 			<col width="30%">
 			<col width="70%">
 			<tr>
-				<td><img src="Assets/event1.jpg" width="320" height="210"></td>
+				<td><img src="assets/event1.jpg" width="320" height="210"></td>
 				<td>
 					<h4>Mid-autumn Mooncake Festival</h4>
-					<label>Quantity: </label><input type="number" id="event1" class="qty" value="0" min="0" step="1" onchange="checkQty();">
+					<label>Quantity: </label><input type="number" id="event0" class="qty" value="0" min="0" step="1" onchange="addEvent();">
 					<p>Time: 24 Sep 19:00-21:00<br>
 						Venue: Level 3, Eastern Secret Garden<br>
 						Price: S$20 per person<br><br>
@@ -128,10 +123,10 @@ table {
 				</td>
 			</tr>
 			<tr>
-				<td><img src="Assets/event2.jpeg" width="320" height="210"></td>
+				<td><img src="assets/event2.jpeg" width="320" height="210"></td>
 				<td>
 					<h4>Stories in A Tea Cup</h4>
-					<label>Quantity: </label><input type="number" id="event2" class="qty" value="0" min="0" step="1" onchange="checkQty();">
+					<label>Quantity: </label><input type="number" id="event1" class="qty" value="0" min="0" step="1" onchange="addEvent();">
 					<p>Time: 1 Oct 19:00-21:00<br>
 						Venue: Level 2, Aroma Balcony<br>
 						Price: S$30 per person<br><br>
@@ -147,10 +142,23 @@ table {
 		<div id="summary">
 			<h3>Booking Summary</h3>
 			<table>
+				<col width="50%">
+				<col width="20%">
+				<col width="20%">
 				<tr>
 					<th>Event</th>
 					<th>Price</th>
 					<th>Quantity</th>
+				</tr>
+				<tr>
+					<td><span id="item0"></span></td>
+					<td><span id="price0"></span></td>
+					<td><span id="qty0"></span></td>
+				</tr>
+				<tr>
+					<td><span id="item1"></span></td>
+					<td><span id="price1"></span></td>
+					<td><span id="qty1"></span></td>
 				</tr>
 			</table>
 		</div>

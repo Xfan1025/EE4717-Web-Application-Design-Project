@@ -14,6 +14,4 @@ else{
     echo "window.location.href = 'register.php';";
     echo '</script>';
 }
-
-
 ?>
