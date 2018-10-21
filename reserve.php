@@ -148,7 +148,7 @@ input, select, textarea {
 		<a href="delivery.html">Delivery</a>
 		<a href="event.html">Event</a>
 		<a href="contact.html">Contact</a>
-		<a href="login_register.html">Login/Register</a>
+		<a href="registration/register.php">Account</a>
 	</nav>
 </div>
 <div id="reserve">
