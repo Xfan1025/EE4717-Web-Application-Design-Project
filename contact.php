@@ -1,3 +1,35 @@
+<?php
+include "dbconnect.php";
+
+if (empty($_POST['cttName']) || empty ($_POST['cttEmail']) || empty ($_POST['cttComment'])) {
+		echo '<script language="javascript">';
+		echo "alert('Invalid submission with empty form.');";
+		echo "window.location.href = 'contact.html';";
+		echo '</script>';
+		exit;
+}
+else {
+	$cttSalulation = $_POST['cttSalulation'];
+	$cttName = $_POST['cttName'];
+	$cttEmail = $_POST[''];
+	$cttComment = $_POST['cttComment'];
+
+	$query = "INSERT INTO contact (ctt_salulation, ctt_name, ctt_email, ctt_comment) 
+	VALUES ('$cttSalulation', '$cttName', '$cttEmail', '$cttComment')";
+	$result = mysqli_query($con, $query);
+	if (!$result) {
+		echo '<script language="javascript">';
+		echo "alert('Contact failed. Please try again later.')";
+		echo '</script>';	}
+	else{
+		echo '<script language="javascript">';
+		echo 'alert("You have sucessfully submitted an inquiry! A confirmation email has been sent to you.");';
+		//Enable automatic email
+		echo "window.location.href = 'home.html';";
+		echo '</script>';
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
