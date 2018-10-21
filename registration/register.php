@@ -4,7 +4,7 @@
 // 1. add checking for already registered user email
 // 2. 
 
-include "dbconnect.php";
+include "../dbconnect.php";
 if (isset($_POST['submit'])) {
 	if (empty($_POST['username']) || empty ($_POST['password'])
 		|| empty ($_POST['password2']) ) {

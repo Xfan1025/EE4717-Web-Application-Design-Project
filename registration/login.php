@@ -1,38 +1,55 @@
 <?php //authmain.php
-include "dbconnect.php";
+include "../dbconnect.php";
 session_start();
 
 if (isset($_POST['user_email']) && isset($_POST['user_password']))
 {
-    // if the user has just tried to log in
-    $email = $_POST['user_email'];
-    $password = $_POST['user_password'];
 
-    $password = md5($password);
-    $query = "select * from users 
-              where user_email='$email'
-              and user_password='$password'";
-            
-    $result = mysqli_query($con, $query);
-    // convert query result as associative array
-    $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
-    if ($result->num_rows >0 )
-    {
-        // if they are in the database register the user id
-        $user_firstName = $row['user_firstName'];
-        $_SESSION['valid_user'] = $user_firstName;    
+	// check if the user has already logged in by checking if session_id is set
+	if (isset($_SESSION['user_id'])){
+		$email = $_SESSION['user_email'];
         echo '<script language="javascript">';
-        echo "alert('Welcome $user_firstName! Now need to change the login to logout - -||')";
+        echo "alert('You are aleady logged in as $email')";
         echo '</script>';
-        $con->close();
-    }
-    else{
-        // currently any query issue will be treated as wrong email/password. Fix later(maybe)
-        echo '<script language="javascript">';
-        echo "alert('Invalid E-mail or Password. Please try again.')";
-        echo '</script>';
-    }
-    
+	}
+	// 5e87dbd58bc6a2a57195922f9afeca3d
+	else{
+		// if the user has just tried to log in
+		$email = $_POST['user_email'];
+		$password = $_POST['user_password'];
+
+		$password = md5($password);
+		$query = "select * from users 
+				where user_email='$email'
+				and user_password='$password'";
+				
+		$result = mysqli_query($con, $query);
+		// convert query result as associative array
+		$row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+		if ($result->num_rows >0 )
+		{
+			// if they are in the database register the user id
+			$user_firstName = $row['user_firstName'];
+			$_SESSION['valid_user'] = $user_firstName;    
+			echo '<script language="javascript">';
+			echo "alert('Welcome $user_firstName! Now need to change the login to logout - -||');";
+			echo '</script>';
+			$con->close();
+			
+			// create session id and assign to session
+			$_SESSION['user_id'] = session_id();
+			$_SESSION['user_email'] = $email;
+			
+		}
+		else{
+			// currently any query issue will be treated as wrong email/password. Fix later(maybe)
+			echo '<script language="javascript">';
+			echo "alert('Invalid E-mail or Password. Please try again.')";
+			echo '</script>';
+		}
+	}
+
+
 }
 ?>
 
@@ -133,6 +150,11 @@ input, select {
 				<label for="logPassword">* Password:</label>
 				<input type="password" name="user_password" id="logPassword" required><br>
 				<input id="logSubmit" type="submit" value="Submit">
+		</form>
+
+		<h2>Logout</h2>
+		<form method="pose" action="../registration/logout.php">
+			<input type="submit" value="Logout"> 
 		</form>
 	</div>
 	<div id="register">
