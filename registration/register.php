@@ -137,7 +137,7 @@ input, select {
 </head>
 <body>
 <div id="title-left">
-	<img src="../Assets/logo.png" id="logo" width="204" height="103">
+	<img src="../assets/logo.png" id="logo" width="204" height="103">
 </div>
 <div id="title-right">
 	<header>
@@ -148,14 +148,14 @@ input, select {
 		<a href="../menu.html">Menu</a>
 		<a href="../reservation.html">Reservation</a>
 		<a href="../delivery.html">Delivery</a>
-		<a href="../event.html">Event</a>
+		<a href="../event.php">Event</a>
 		<a href="../contact.html">Contact</a>
 		<a href="./register.php">Account</a>
 	</nav>
 </div>
 <div id="user">
 	<div id="header">
-		<img src="../Assets/headerLoginRegister.png" width="1400" height="300">	
+		<img src="../assets/headerLoginRegister.png" width="1400" height="300">	
 	</div>
 
 

@@ -20,3 +20,12 @@ CREATE TABLE contact (
     ctt_comment VARCHAR(100),
     CONSTRAINT contact_PK PRIMARY KEY (ctt_id)
 );
+
+CREATE TABLE users (
+    user_id INT NOT NULL AUTO_INCREMENT,
+    user_firstName VARCHAR(20),
+    user_lastName VARCHAR(20),
+    user_email VARCHAR(30) UNIQUE,
+    user_password VARCHAR(50),
+    CONSTRAINT users_PK PRIMARY KEY (user_id)
+);
