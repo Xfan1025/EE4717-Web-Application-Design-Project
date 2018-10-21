@@ -3,50 +3,75 @@
 // ToDo:
 // 1. add checking for already registered user email
 // 2. 
-
+session_start();
 include "../dbconnect.php";
-if (isset($_POST['submit'])) {
-	if (empty($_POST['username']) || empty ($_POST['password'])
-		|| empty ($_POST['password2']) ) {
-	echo "All records to be filled in";
-	exit;}
-	}
-$firstName = $_POST['user_firstName'];
-$lastName = $_POST['user_lastName'];
-$email = $_POST['user_email'];
-$password = $_POST['user_password'];
-$password2 = $_POST['user_password_confirm'];
 
+if (empty($_POST['user_firstName']) ) {
+	// no post form
 
-if ($password != $password2) {
-	echo '<script language="javascript">';
-	echo 'alert("Sorry, password does not match.")';
-	echo '</script>';
-	}
+}
 else {
-	$password = md5($password);
-	$query = "INSERT INTO users (user_firstName, user_lastName, user_email, user_password) 
-			VALUES ('$firstName', '$lastName', '$email', '$password')";
-	$result = mysqli_query($con, $query);
+	$firstName = $_POST['user_firstName'];
+	$lastName = $_POST['user_lastName'];
+	$email = $_POST['user_email'];
+	$password = $_POST['user_password'];
+	$password2 = $_POST['user_password_confirm'];
 
-	if (!$result) {
-		echo '<script language="javascript">';
-		echo "alert('The E-mail $email has already been registered. Login instead.')"; // currenyly any insertion error will lead to this. maybe fix later
-		echo '</script>';	}
 
-	else{
+	if ($password != $password2) {
 		echo '<script language="javascript">';
-		echo 'alert("You have sucessfully registered! Now login to confirm.")';
+		echo 'alert("Sorry, password does not match.")';
 		echo '</script>';
+		}
+	else {
+		$password = md5($password);
+		$query = "INSERT INTO users (user_firstName, user_lastName, user_email, user_password) 
+				VALUES ('$firstName', '$lastName', '$email', '$password')";
+		$result = mysqli_query($con, $query);
+
+		if (!$result) {
+			echo '<script language="javascript">';
+			echo "alert('The E-mail $email has already been registered. Login instead.')"; // currenyly any insertion error will lead to this. maybe fix later
+			echo '</script>';	}
+
+		else{
+			echo '<script language="javascript">';
+			echo 'alert("You have sucessfully registered! Now login to confirm.")';
+			echo '</script>';
+		}
 	}
 }
+
+// if not logged in
+if (!isset($_SESSION['user_id'])){
+	$show_div = '
+				<h2>Login</h2>
+				<form method="post" action="../registration/login.php" id="info"> <!-- maybe add input checking here -->
+						<label for="logEmail">* E-mail:</label>
+						<input type="email" name="user_email" id="logEmail" required><br>
+						<label for="logPassword">* Password:</label>
+						<input type="password" name="user_password" id="logPassword" required><br>
+						<input id="logSubmit" type="submit" value="Submit">
+				</form>';
+}
+// if logged in 
+else{
+	$email = $_SESSION['user_email'];
+	$show_div = "
+				<h2>Logout</h2>
+				You are logged in using $email
+				<form method='pose' action='../registration/logout.php'>
+					<input type='submit' value='Logout'> 
+				</form>";
+}
+
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Xiong Mao - Login/Register</title>
+<title>Xiong Mao - Account</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../xiongmao.css">
 <style>
@@ -125,23 +150,20 @@ input, select {
 		<a href="../delivery.html">Delivery</a>
 		<a href="../event.html">Event</a>
 		<a href="../contact.html">Contact</a>
-		<a href="../login_register.html">Login/Register</a>
+		<a href="./register.php">Account</a>
 	</nav>
 </div>
 <div id="user">
 	<div id="header">
 		<img src="../Assets/headerLoginRegister.png" width="1400" height="300">	
 	</div>
+
+
+
 	<div id="login">
-		<h2>Login</h2>
-		<form method="post" action="../registration/login.php" id="info"> <!-- maybe add input checking here -->
-  				<label for="logEmail">* E-mail:</label>
-  				<input type="email" name="user_email" id="logEmail" required><br>
-				<label for="logPassword">* Password:</label>
-				<input type="password" name="user_password" id="logPassword" required><br>
-				<input id="logSubmit" type="submit" value="Submit">
-		</form>
+		<?php echo $show_div; ?>
 	</div>
+
 	<div id="register">
 		<h2>Register</h2>
 		<form method="post" action="../registration/register.php" id="info" onsubmit="return checkInput();">
