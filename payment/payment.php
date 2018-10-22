@@ -8,6 +8,7 @@ if (isset($_POST['event_qty0'])){
     $user_email = $_SESSION['user_email'];
     
     $total = 20 * $qty0 + 30 * $qty1;
+    $_SESSION['trans_dollars'] = $total;
     if ($qty0 == 0){
         // only second event got booked
         $show_table = " <h2>Event Booking Summary for $user_email</h2>
@@ -30,6 +31,10 @@ if (isset($_POST['event_qty0'])){
                                 <td>S$$total</td>
                             </tr>
                         </table>";
+        $_SESSION['events_booked'] = array(
+            'event1' => $qty1,
+        );
+
     }
     else if ($qty1 == 0){
         // only first event got booked
@@ -52,7 +57,10 @@ if (isset($_POST['event_qty0'])){
                                 <td> </td>
                                 <td>S$$total</td>
                             </tr>
-                        </table>";        
+                        </table>";
+        $_SESSION['events_booked'] = array(
+            'event0' => $qty0,
+        );        
     }
     else {
         // both two events got booked
@@ -82,7 +90,11 @@ if (isset($_POST['event_qty0'])){
                                 <td> </td>
                                 <td>S$$total</td>
                             </tr>
-                        </table>";         
+                        </table>";
+        $_SESSION['events_booked'] = array(
+            'event0' => $qty0,
+            'event1' => $qty1,
+        );         
     }
 
 }
@@ -223,29 +235,22 @@ input {
 </div>
 <div id="wrapper">
 	<div id="column-left">
-		<!-- <h2>Order Summary</h2>
-		<table>
-			<tr>
-				<th>Name</th>
-				<th>Price</th>
-				<th>Quantity</th>
-			</tr>
-        </table> -->
+
         <?php echo $show_table; ?>
 	</div>
 	<div id="column-center">
         <h2>Delivery Address</h2>
-		<form name="applicantInfo" method="post" id="applicantInfo" action="make_payment.php" onsubmit="return checkInput();">
+		<form method="post"  action="make_payment.php" onsubmit="return checkInput();">
 			<label for="name">* Name:</label> 
-			<input type="text" id="payName" required>
+			<input type="text" name="delivery_name" id="payName" required>
 			<label for="phone">* Phone:</label>
-			<input type="text" id="payPhone" required>
+			<input type="text" name="delivery_phone" id="payPhone" required>
 			<label for="email">* Email:</label>
-			<input type="email" id="payEmail" required>
+			<input type="email" name="delivery_email" id="payEmail" required>
 			<label for="address">* Address:</label>
-			<input type="text" id="payAddress" required>
+			<input type="text" name="delivery_address" id="payAddress" required>
 			<label for="postcode">* Postcode:</label>
-			<input type="text" id="payPostcode" required>
+			<input type="text" name="delivery_postcode" id="payPostcode" required>
 	</div>	
 	<div id="column-right">
 		<h2>Payment</h2>
