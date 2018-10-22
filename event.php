@@ -1,14 +1,14 @@
 <?php
 session_start();
 //Check account status: logged-in or not
-/* Temporarily disabled for debug purpose
+//Consider ttemporarily disabled for debug purpose
 if (!isset($_SESSION['user_id'])){
     echo '<script language="javascript">';
     echo "alert('Members only! Please log in to access the page.');";
     echo "window.location.href = 'registration/register.php';";
     echo '</script>';
 }
-*/
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,12 +152,12 @@ table {
 					<th>Price</th>
 					<th>Quantity</th>
 				</tr>
-				<tr>
+				<tr id="sect0">
 					<td><span id="item0"></span></td>
 					<td><span id="price0"></span></td>
 					<td><span id="qty0"></span></td>
 				</tr>
-				<tr>
+				<tr id="sect1">
 					<td><span id="item1"></span></td>
 					<td><span id="price1"></span></td>
 					<td><span id="qty1"></span></td>
@@ -165,7 +165,7 @@ table {
 			</table>
 		</div>
 		<div id="total">
-			<p><strong>Total: S$ <input type="number" id="amount" value=0 onfocus="this.blur();"></strong></p>
+			<p><strong>Total: S$ <input type="text" id="amount" value=0 onfocus="this.blur();"></strong></p>
 			<input type="submit" id="eventCheckout" value="Check Out" style="width: 80px;">
 		</div>
 	</div>
