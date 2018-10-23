@@ -12,22 +12,22 @@ function addEvent(){
     checkQty();
     for (var i = 0; i < 2; i++){
         added = document.getElementById("event" + i).value;
+        var item = document.getElementById("item" + i);
+        var price = document.getElementById("price" + i);
+        var qty = document.getElementById("qty" + i);
+        var sect = document.getElementById("sect" + i);
         if (added > 0){
-            var item = document.getElementById("item" + i);
-            item.innerHTML = eventList[i].item;
-            var price = document.getElementById("price" + i);
+            sect.style.display = "table-row";
+            item.innerHTML = eventList[i].item; 
             price.innerHTML = eventList[i].price;
-            var qty = document.getElementById("qty" + i);
             qty.innerHTML = added;
             eventList[i].qty = added;
         }
         else {
-            var item = document.getElementById("item" + i);
-            item.innerHTML = "";
-            var price = document.getElementById("price" + i);
-            price.innerHTML = "";
-            var qty = document.getElementById("qty" + i);
-            qty.innerHTML = "";
+            sect.style.display = "none";
+            //item.innerHTML = "";
+            //price.innerHTML = "";
+            //qty.innerHTML = "";
         }
         compute(eventList);
     }
