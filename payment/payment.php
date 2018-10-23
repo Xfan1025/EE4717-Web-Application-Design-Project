@@ -1,12 +1,16 @@
 <?php
 session_start();
 
+// print_r($_POST);
+
 if (isset($_POST['event_qty0'])){
     // echo "Event booking checkout for ";
     $qty0 = $_POST['event_qty0'];
     $qty1 = $_POST['event_qty1'];
     $user_email = $_SESSION['user_email'];
-    
+	
+	// print_r($_POST);
+
     $total = 20 * $qty0 + 30 * $qty1;
     $_SESSION['trans_dollars'] = $total;
     if ($qty0 == 0){
@@ -100,7 +104,67 @@ if (isset($_POST['event_qty0'])){
 }
 
 else{
-    // echo "Delivery ordering checkout for ";
+	// payment for delivery
+	include "../dbconnect.php";
+	$query = array("", "", "", "", "", "", "", "", "", "");
+	$price = array("", "", "", "", "", "", "", "", "", "");
+	$product_name = array("", "", "", "", "", "", "", "", "", "");
+	for ($i = 0; $i < 10; $i++){
+		$query[$i] = "select * from menu where product_id = ".$i;
+		$result = $con -> query($query[$i]) -> fetch_assoc();
+		// echo json_encode($result);
+		$price[$i] = $result['product_price'];
+		$product_name[$i] = $result['product_name'];
+	}
+    // print_r($_POST);
+	// obtain quantities
+	// the form submission is hardcoded - -||
+	// to be implement as vector/array in future if business grows ;)
+
+	$qty0 = $_POST['delivery0'];
+    $qty1 = $_POST['delivery1'];
+	$qty2 = $_POST['delivery2'];
+	$qty3 = $_POST['delivery3'];
+	$qty4 = $_POST['delivery4'];
+	$qty5 = $_POST['delivery5'];
+	$qty6 = $_POST['delivery6'];
+	$qty7 = $_POST['delivery7'];
+	$qty8 = $_POST['delivery8'];
+	$qty9 = $_POST['delivery9'];
+	
+	$qtys = array($qty0, $qty1, $qty2, $qty3, $qty4, $qty5, $qty6, $qty7, $qty8, $qty9);
+
+	$show_table = ' <table>
+
+					<tr>
+						<th>Food</th>
+						<th>Quantity</th>
+						<th>Price</th>
+					</tr>';
+	$total = 0;
+	for ($i = 0; $i < 10; $i++){
+		if($qtys[$i]>0){
+			$name_i = $product_name[$i];
+			$qty_i = $qtys[$i];
+			$price_i = $price[$i] * $qty_i;
+
+			$total += $price_i;
+			$show_table = $show_table." <tr>
+										<td>$name_i</td>
+										<td>$qty_i</td>
+										<td>S$$price_i</td>
+										</tr>";
+		}
+
+	}
+	$show_table = $show_table." <tr><td></td><td></td><td></td></tr>
+								<tr>
+								<th>Total</th>
+								<th> </th>
+								<th>S$$total</th>
+								</tr>
+								</table>";
+
 }
 // $qty0 = $_POST['event_qty0'];
 // $qty1 = $_POST['event_qty1'];
@@ -116,7 +180,7 @@ else{
 <title>Xiong Mao - Payment</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../xiongmao.css">
-<script src="../menu.js"></script>
+<!-- <script src="../menu.js"></script> -->
 
 <style>
 #header {
@@ -155,6 +219,7 @@ else{
 table {
 	width: 80%; 
 	margin: auto;
+	text-align: center;
 }
 td, th {
 	padding:10px;
@@ -224,7 +289,7 @@ input {
 		<a href="../home.html">Home</a>
 		<a href="../menu.html">Menu</a>
 		<a href="../reservation.html">Reservation</a>
-		<a href="../delivery.html">Delivery</a>
+		<a href="../delivery.php">Delivery</a>
 		<a href="../event.php">Event</a>
 		<a href="../contact.html">Contact</a>
 		<a href="../registration/register.php">Account</a>

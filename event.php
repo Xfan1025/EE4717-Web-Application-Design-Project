@@ -15,6 +15,21 @@ if (!isset($_SESSION['user_id'])){
 <title>Xiong Mao - Event</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="xiongmao.css">
+<script>
+function checkInput(){
+	// check qty
+	// prevent form submission if both are 0
+	var qty0 = document.getElementById("event0").value;
+	var qty1 = document.getElementById("event1").value;
+	// alert(qty0);
+	if ((qty0==0) && (qty1==0)) {
+		alert("You did not book any event!");
+
+		return false;
+	}
+
+}
+</script>
 <style>
 #header {
 	text-align: center;
@@ -105,7 +120,7 @@ table {
 	<div id="header">
 		<img src="assets/headerEvent.png" width="1400" height="300">
 	</div>
-	<form action="payment/payment.php" method="POST">
+	<form method="post" action="payment/payment.php" onsubmit="return checkInput();">
 	<div id="event">
 		<table id="info">
 			<col width="30%">

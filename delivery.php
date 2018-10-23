@@ -157,6 +157,28 @@ table {
 			y.value = "+";
     	}
 	}
+
+	function checkInput(){
+		// check qty
+		// prevent form submission if nothing got ordered
+		var qty0 = document.getElementById("delivery0").value;
+		var qty1 = document.getElementById("delivery1").value;
+		var qty2 = document.getElementById("delivery2").value;
+		var qty3 = document.getElementById("delivery3").value;
+		var qty4 = document.getElementById("delivery4").value;
+		var qty5 = document.getElementById("delivery5").value;
+		var qty6 = document.getElementById("delivery6").value;
+		var qty7 = document.getElementById("delivery7").value;
+		var qty8 = document.getElementById("delivery8").value;
+		var qty9 = document.getElementById("delivery9").value;
+
+		if ((qty0+qty1+qty2+qty3+qty4+qty5+qty6+qty7+qty8+qty9)==0) {
+			alert("You did not order anything!");
+
+			return false;
+		}
+
+	}
 </script>
 <script src="delivery.js"></script>
 </head>
@@ -181,6 +203,7 @@ table {
 <div id="header">
 	<img src="assets/headerDelivery.png" width="1400" height="300">
 </div>
+<form method="post" action="payment/payment.php" onsubmit="return checkInput();">
 <div id="delivery">
 	<div id="menu">
 		<h3>Meat<input type="button" class="btn" id="btnMeat" value="-" onclick="foldMeat();"></h3>
@@ -193,13 +216,13 @@ table {
 				<td><img src="assets/delivery1.jpg" width="180" height="120"></td>
 				<td>
 					<h4>Sliced Beef with Black Pepper Sauce</h4>
-					<label>Quantity: </label><input type="number" id="delivery0" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<label>Quantity: </label><input type="number" id="delivery0" name="delivery0" class="qty" value="0" min="0" step="1" onchange="addProduct();">
 					<p>Price: S$<?php echo number_format((float)$price[0], 2); ?></p><br>
 				</td>
 				<td><img src="assets/delivery2.jpg" width="180" height="120"></td>
 				<td>
 					<h4>Double Cooked Pork with Chinese Leek</h4>
-					<label>Quantity: </label><input type="number" id="delivery1" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<label>Quantity: </label><input type="number" id="delivery1" name="delivery1" class="qty" value="0" min="0" step="1" onchange="addProduct();">
 					<p>Price: S$<?php echo number_format((float)$price[1], 2); ?></p><br>
 				</td>
 			</tr>
@@ -207,13 +230,13 @@ table {
 				<td><img src="assets/delivery3.jpeg" width="180" height="120"></td>
 				<td>
 					<h4>Spicy Chicken</h4>
-					<label>Quantity: </label><input type="number" id="delivery2" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<label>Quantity: </label><input type="number" id="delivery2" name="delivery2" class="qty" value="0" min="0" step="1" onchange="addProduct();">
 					<p>Price: S$<?php echo number_format((float)$price[2], 2); ?></p><br>
 				</td>
 				<td><img src="assets/delivery4.jpg" width="180" height="120"></td>
 				<td>
 					<h4>Fish Filets in Hot Chili Oil</h4>
-					<label>Quantity: </label><input type="number" id="delivery3" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<label>Quantity: </label><input type="number" id="delivery3" name="delivery3" class="qty" value="0" min="0" step="1" onchange="addProduct();">
 					<p>Price: S$<?php echo number_format((float)$price[3], 2); ?></p><br>
 				</td>
 			</tr>
@@ -228,13 +251,13 @@ table {
 				<td><img src="assets/delivery5.jpg" width="180" height="120"></td>
 				<td>
 					<h4>Egg Plant with Minced Chicken and Sichuan Chilli Sauce</h4>
-					<label>Quantity: </label><input type="number" id="delivery4" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<label>Quantity: </label><input type="number" id="delivery4" name="delivery4" class="qty" value="0" min="0" step="1" onchange="addProduct();">
 					<p>Price: S$<?php echo number_format((float)$price[4], 2); ?></p><br>
 				</td>
 				<td><img src="assets/delivery6.jpeg" width="180" height="120"></td>
 				<td>
 					<h4>Lettuce in Oyster Sauce</h4>
-					<label>Quantity: </label><input type="number" id="delivery5" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<label>Quantity: </label><input type="number" id="delivery5" name="delivery5" class="qty" value="0" min="0" step="1" onchange="addProduct();">
 					<p>Price: S$<?php echo number_format((float)$price[5], 2); ?></p><br>
 				</td>
 			</tr>
@@ -249,13 +272,13 @@ table {
 				<td><img src="assets/delivery7.png" width="180" height="120"></td>
 				<td>
 					<h4>Bai Mu Dan White Peony Tea</h4>
-					<label>Quantity: </label><input type="number" id="delivery6" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<label>Quantity: </label><input type="number" id="delivery6" name="delivery6" class="qty" value="0" min="0" step="1" onchange="addProduct();">
 					<p>Price: S$<?php echo number_format((float)$price[6], 2); ?></p><br>
 				</td>
 				<td><img src="assets/delivery8.png" width="180" height="120"></td>
 				<td>
 					<h4>Oolong Tea</h4>
-					<label>Quantity: </label><input type="number" id="delivery7" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<label>Quantity: </label><input type="number" id="delivery7" name="delivery7" class="qty" value="0" min="0" step="1" onchange="addProduct();">
 					<p>Price: S$<?php echo number_format((float)$price[7], 2); ?></p><br>
 				</td>
 			</tr>
@@ -263,13 +286,13 @@ table {
 				<td><img src="assets/delivery9.png" width="180" height="120"></td>
 				<td>
 					<h4>Sweet-sour Plum Juice</h4>
-					<label>Quantity: </label><input type="number" id="delivery8" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<label>Quantity: </label><input type="number" id="delivery8" name="delivery8" class="qty" value="0" min="0" step="1" onchange="addProduct();">
 					<p>Price: S$<?php echo number_format((float)$price[8], 2); ?></p><br>
 				</td>
 				<td><img src="assets/delivery10.png" width="180" height="120"></td>
 				<td>
 					<h4>Traditional Chinese Liquor</h4>
-					<label>Quantity: </label><input type="number" id="delivery9" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<label>Quantity: </label><input type="number" id="delivery9" name="delivery9" class="qty" value="0" min="0" step="1" onchange="addProduct();">
 					<p>Price: S$<?php echo number_format((float)$price[9], 2); ?></p><br>
 				</td>
 			</tr>
@@ -283,7 +306,7 @@ table {
 				<col width="20%">
 				<col width="20%">
 				<tr>
-					<th>Event</th>
+					<th>Food</th>
 					<th>Price</th>
 					<th>Quantity</th>
 				</tr>
@@ -340,9 +363,12 @@ table {
 			</table>
 		</div>
 		<div id="total">
+		
 			<p><strong>Total: S$ <input type="text" id="amount" value="0" onfocus="this.blur(); "></strong></p>
 			<input type="submit" id="eventCheckout" value="Check Out" style="width: 80px;">
 		</div>
+		</form>
+
 	</div>
 </div>
 <footer>
