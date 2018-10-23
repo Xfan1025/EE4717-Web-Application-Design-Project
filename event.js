@@ -4,11 +4,12 @@ function Event(item, price, qty){
     this.qty = qty;
 }
 
+var eventList = [
+    new Event("Mid-autumn Mooncake Festival", 20, 0),
+    new Event("Stories in A Tea Cup", 30, 0)
+];
+
 function addEvent(){
-    var eventList = [
-        new Event("Mid-autumn Mooncake Festival", 20, 0),
-        new Event("Stories in A Tea Cup", 30, 0)
-    ];
     checkQty();
     for (var i = 0; i < 2; i++){
         added = document.getElementById("event" + i).value;
@@ -25,6 +26,7 @@ function addEvent(){
         }
         else {
             sect.style.display = "none";
+            eventList[i].qty = 0;
             //item.innerHTML = "";
             //price.innerHTML = "";
             //qty.innerHTML = "";
@@ -35,8 +37,8 @@ function addEvent(){
 
 function checkQty(){
     var check = document.getElementsByClassName("qty");
-    for (var i = 0; i <= 1; i++){
-        if ((check[i].value<0)||(check[i].value%1!=0)){
+    for (var i = 0; i < 2; i++){
+        if ((check[i].value < 0)||(check[i].value % 1 != 0)){
             alert("The quantity is not valid.\n" + "It must be a positive integer.");
             check[i].focus();
             check[i].select();
