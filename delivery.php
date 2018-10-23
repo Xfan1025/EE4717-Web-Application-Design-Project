@@ -1,4 +1,23 @@
-<!--validation at cart when update-->
+<?php
+session_start();
+//Check account status: logged-in or not
+//Consider ttemporarily disabled for debug purpose
+if (!isset($_SESSION['user_id'])){
+    echo '<script language="javascript">';
+    echo "alert('Members only! Please log in to access the page.');";
+    echo "window.location.href = 'registration/register.php';";
+    echo '</script>';
+} 
+
+include "dbconnect.php";
+$query = array("", "", "", "", "", "", "", "", "", "");
+$price = array("", "", "", "", "", "", "", "", "", "");
+for ($i = 0; $i < 10; $i++){
+	$query[$i] = "select product_price from menu where product_id = ".$i;
+	$result = $con -> query($query[$i]) -> fetch_assoc();
+	$price[$i] = $result['product_price'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +45,7 @@
 	display: inline-block;
 }
 #summary {
-	height: 450px;
+	height: 500px;
 	text-align: center;
 	vertical-align: top;
 }
@@ -38,9 +57,8 @@
 	text-align: left;
 }
 #cart td, th {
-	padding-left: 30px;
-	padding-right: 30px;
-} 
+	padding-bottom: 10px;
+}  
 #amount {
     background-color: transparent;
     border: 0px solid;
@@ -90,31 +108,29 @@ table {
 	margin: auto;
 }    
 </style>
+
 <script>
-	function checkQty(){
-		var qty = document.getElementsByClassName("qty");
-		for (var i = 0; i <= 1; i++){
-			if ((qty[i].value<0)||(qty[i].value%1!=0)){
-				alert("The qty is not valid.\n" + "It must be a positive integer.");
-				qty[i].focus();
-				qty[i].select();
-				console.log("Error:"+i+"="+qty[i].value);
-				return false;
-		    }
-		}
-	}
+	var price0 = "<?php echo $price[0]; ?>";
+	var price1 = "<?php echo $price[1]; ?>";
+	var price2 = "<?php echo $price[2]; ?>";
+	var price3 = "<?php echo $price[3]; ?>";
+	var price4 = "<?php echo $price[4]; ?>";
+	var price5 = "<?php echo $price[5]; ?>";
+	var price6 = "<?php echo $price[6]; ?>";
+	var price7 = "<?php echo $price[7]; ?>";
+	var price8 = "<?php echo $price[8]; ?>";
+	var price9 = "<?php echo $price[9]; ?>";
+
 	function foldMeat() { //Not work for default with "display: none"
     	var x = document.getElementById("meat");
 		var y = document.getElementById("btnMeat");
     	if (x.style.display === "none") {
         	x.style.display = "block";
 			y.value = "-";
-			console.log("if y="+y.value);
     	} 
 		else {
     		x.style.display = "none";
 			y.value = "+";
-			console.log("else y="+y.value);
     	}
 	}
 	function foldVege() {
@@ -142,6 +158,7 @@ table {
     	}
 	}
 </script>
+<script src="delivery.js"></script>
 </head>
 <body>
 <div id="title-left">
@@ -155,7 +172,7 @@ table {
 		<a href="home.html">Home</a>
 		<a href="menu.html">Menu</a>
 		<a href="reservation.html">Reservation</a>
-		<a href="delivery.html">Delivery</a>
+		<a href="delivery.php">Delivery</a>
 		<a href="event.php">Event</a>
 		<a href="contact.html">Contact</a>
 		<a href="registration/register.php">Account</a>
@@ -176,28 +193,28 @@ table {
 				<td><img src="assets/delivery1.jpg" width="180" height="120"></td>
 				<td>
 					<h4>Sliced Beef with Black Pepper Sauce</h4>
-					<label>Quantity: </label><input type="number" id="delivery1" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$20.00</p><br>
+					<label>Quantity: </label><input type="number" id="delivery0" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<p>Price: S$<?php echo number_format((float)$price[0], 2); ?></p><br>
 				</td>
 				<td><img src="assets/delivery2.jpg" width="180" height="120"></td>
 				<td>
 					<h4>Double Cooked Pork with Chinese Leek</h4>
-					<label>Quantity: </label><input type="number" id="delivery2" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$16.00</p><br>
+					<label>Quantity: </label><input type="number" id="delivery1" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<p>Price: S$<?php echo number_format((float)$price[1], 2); ?></p><br>
 				</td>
 			</tr>
 			<tr>
 				<td><img src="assets/delivery3.jpeg" width="180" height="120"></td>
 				<td>
 					<h4>Spicy Chicken</h4>
-					<label>Quantity: </label><input type="number" id="delivery3" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$18.00</p><br>
+					<label>Quantity: </label><input type="number" id="delivery2" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<p>Price: S$<?php echo number_format((float)$price[2], 2); ?></p><br>
 				</td>
 				<td><img src="assets/delivery4.jpg" width="180" height="120"></td>
 				<td>
 					<h4>Fish Filets in Hot Chili Oil</h4>
-					<label>Quantity: </label><input type="number" id="delivery4" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$22.00</p><br>
+					<label>Quantity: </label><input type="number" id="delivery3" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<p>Price: S$<?php echo number_format((float)$price[3], 2); ?></p><br>
 				</td>
 			</tr>
 		</table>
@@ -211,14 +228,14 @@ table {
 				<td><img src="assets/delivery5.jpg" width="180" height="120"></td>
 				<td>
 					<h4>Egg Plant with Minced Chicken and Sichuan Chilli Sauce</h4>
-					<label>Quantity: </label><input type="number" id="delivery5" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$10.00</p><br>
+					<label>Quantity: </label><input type="number" id="delivery4" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<p>Price: S$<?php echo number_format((float)$price[4], 2); ?></p><br>
 				</td>
 				<td><img src="assets/delivery6.jpeg" width="180" height="120"></td>
 				<td>
 					<h4>Lettuce in Oyster Sauce</h4>
-					<label>Quantity: </label><input type="number" id="delivery2" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$8.00</p><br>
+					<label>Quantity: </label><input type="number" id="delivery5" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<p>Price: S$<?php echo number_format((float)$price[5], 2); ?></p><br>
 				</td>
 			</tr>
 		</table>
@@ -232,28 +249,28 @@ table {
 				<td><img src="assets/delivery7.png" width="180" height="120"></td>
 				<td>
 					<h4>Bai Mu Dan White Peony Tea</h4>
-					<label>Quantity: </label><input type="number" id="delivery1" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$5.00</p><br>
+					<label>Quantity: </label><input type="number" id="delivery6" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<p>Price: S$<?php echo number_format((float)$price[6], 2); ?></p><br>
 				</td>
 				<td><img src="assets/delivery8.png" width="180" height="120"></td>
 				<td>
 					<h4>Oolong Tea</h4>
-					<label>Quantity: </label><input type="number" id="delivery2" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$4.50</p><br>
+					<label>Quantity: </label><input type="number" id="delivery7" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<p>Price: S$<?php echo number_format((float)$price[7], 2); ?></p><br>
 				</td>
 			</tr>
 			<tr>
 				<td><img src="assets/delivery9.png" width="180" height="120"></td>
 				<td>
 					<h4>Sweet-sour Plum Juice</h4>
-					<label>Quantity: </label><input type="number" id="delivery3" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$3.50</p><br>
+					<label>Quantity: </label><input type="number" id="delivery8" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<p>Price: S$<?php echo number_format((float)$price[8], 2); ?></p><br>
 				</td>
 				<td><img src="assets/delivery10.png" width="180" height="120"></td>
 				<td>
 					<h4>Traditional Chinese Liquor</h4>
-					<label>Quantity: </label><input type="number" id="delivery4" class="qty" value="0" min="0" step="1" onchange="checkQty();">
-					<p>Price: S$11.00</p><br>
+					<label>Quantity: </label><input type="number" id="delivery9" class="qty" value="0" min="0" step="1" onchange="addProduct();">
+					<p>Price: S$<?php echo number_format((float)$price[9], 2); ?></p><br>
 				</td>
 			</tr>
 		</table>
@@ -262,15 +279,68 @@ table {
 		<div id="summary">
 			<h3>Shopping Cart</h3>
 			<table>
+				<col width="40%">
+				<col width="20%">
+				<col width="20%">
 				<tr>
 					<th>Event</th>
 					<th>Price</th>
 					<th>Quantity</th>
 				</tr>
+				<tr id="sect0">
+					<td><span id="item0"></span></td>
+					<td><span id="price0"></span></td>
+					<td><span id="qty0"></span></td>
+				</tr>
+				<tr id="sect1">
+					<td><span id="item1"></span></td>
+					<td><span id="price1"></span></td>
+					<td><span id="qty1"></span></td>
+				</tr>
+				<tr id="sect2">
+					<td><span id="item2"></span></td>
+					<td><span id="price2"></span></td>
+					<td><span id="qty2"></span></td>
+				</tr>
+				<tr id="sect3">
+					<td><span id="item3"></span></td>
+					<td><span id="price3"></span></td>
+					<td><span id="qty3"></span></td>
+				</tr>
+				<tr id="sect4">
+					<td><span id="item4"></span></td>
+					<td><span id="price4"></span></td>
+					<td><span id="qty4"></span></td>
+				</tr>
+				<tr id="sect5">
+					<td><span id="item5"></span></td>
+					<td><span id="price5"></span></td>
+					<td><span id="qty5"></span></td>
+				</tr>
+				<tr id="sect6">
+					<td><span id="item6"></span></td>
+					<td><span id="price6"></span></td>
+					<td><span id="qty6"></span></td>
+				</tr>
+				<tr id="sect7">
+					<td><span id="item7"></span></td>
+					<td><span id="price7"></span></td>
+					<td><span id="qty7"></span></td>
+				</tr>
+				<tr id="sect8">
+					<td><span id="item8"></span></td>
+					<td><span id="price8"></span></td>
+					<td><span id="qty8"></span></td>
+				</tr>
+				<tr id="sect9">
+					<td><span id="item9"></span></td>
+					<td><span id="price9"></span></td>
+					<td><span id="qty9"></span></td>
+				</tr>
 			</table>
 		</div>
 		<div id="total">
-			<p><strong>Total: S$ <input type="text" id="amount" value="0.00" onfocus="this.blur(); "></strong></p>
+			<p><strong>Total: S$ <input type="text" id="amount" value="0" onfocus="this.blur(); "></strong></p>
 			<input type="submit" id="eventCheckout" value="Check Out" style="width: 80px;">
 		</div>
 	</div>

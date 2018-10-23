@@ -147,7 +147,7 @@ input, select {
 		<a href="../home.html">Home</a>
 		<a href="../menu.html">Menu</a>
 		<a href="../reservation.html">Reservation</a>
-		<a href="../delivery.html">Delivery</a>
+		<a href="../delivery.php">Delivery</a>
 		<a href="../event.php">Event</a>
 		<a href="../contact.html">Contact</a>
 		<a href="./register.php">Account</a>
@@ -157,13 +157,9 @@ input, select {
 	<div id="header">
 		<img src="../assets/headerLoginRegister.png" width="1400" height="300">	
 	</div>
-
-
-
 	<div id="login">
 		<?php echo $show_div; ?>
 	</div>
-
 	<div id="register">
 		<h2>Register</h2>
 		<form method="post" action="../registration/register.php" id="info" onsubmit="return checkInput();">
