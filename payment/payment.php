@@ -106,6 +106,7 @@ if (isset($_POST['event_qty0'])){
 else{
 	// payment for delivery
 	include "../dbconnect.php";
+	$user_email = $_SESSION['user_email'];
 	$query = array("", "", "", "", "", "", "", "", "", "");
 	$price = array("", "", "", "", "", "", "", "", "", "");
 	$product_name = array("", "", "", "", "", "", "", "", "", "");
@@ -134,19 +135,24 @@ else{
 	
 	$qtys = array($qty0, $qty1, $qty2, $qty3, $qty4, $qty5, $qty6, $qty7, $qty8, $qty9);
 
-	$show_table = ' <table>
-
+	$show_table = " <h2>Delivery Ordering Summary for $user_email</h2>
+					<table>
 					<tr>
 						<th>Food</th>
 						<th>Quantity</th>
 						<th>Price</th>
-					</tr>';
+					</tr>";
 	$total = 0;
+
+	// will store orders as json format in database
+	$order_arr = array();
 	for ($i = 0; $i < 10; $i++){
 		if($qtys[$i]>0){
 			$name_i = $product_name[$i];
 			$qty_i = $qtys[$i];
 			$price_i = $price[$i] * $qty_i;
+
+			$order_arr['food'.$i] = $qty_i;
 
 			$total += $price_i;
 			$show_table = $show_table." <tr>
@@ -157,6 +163,10 @@ else{
 		}
 
 	}
+	// store orders in session
+	$_SESSION['food_ordered'] = $order_arr;
+	$_SESSION['trans_dollars'] = $total;
+
 	$show_table = $show_table." <tr><td></td><td></td><td></td></tr>
 								<tr>
 								<th>Total</th>
