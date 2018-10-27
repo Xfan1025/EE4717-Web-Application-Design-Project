@@ -15,6 +15,21 @@ if (!isset($_SESSION['user_id'])){
 <title>Xiong Mao - Event</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="xiongmao.css">
+<script>
+function checkInput(){
+	// check qty
+	// prevent form submission if both are 0
+	var qty0 = document.getElementById("event0").value;
+	var qty1 = document.getElementById("event1").value;
+	// alert(qty0);
+	if ((qty0==0) && (qty1==0)) {
+		alert("You did not book any event!");
+
+		return false;
+	}
+
+}
+</script>
 <style>
 #header {
 	text-align: center;
@@ -105,6 +120,7 @@ table {
 	<div id="header">
 		<img src="assets/headerEvent.png" width="1400" height="300">
 	</div>
+	<form method="post" action="payment/payment.php" onsubmit="return checkInput();">
 	<div id="event">
 		<table id="info">
 			<col width="30%">
@@ -113,7 +129,7 @@ table {
 				<td><img src="assets/event1.jpg" width="320" height="210"></td>
 				<td>
 					<h4>Mid-autumn Mooncake Festival</h4>
-					<label>Quantity: </label><input type="number" id="event0" class="qty" value="0" min="0" step="1" onchange="addEvent();">
+					<label>Quantity: </label><input type="number" id="event0" name="event_qty0" class="qty" value="0" min="0" step="1" onchange="addEvent();">
 					<p>Time: 24 Sep 19:00-21:00<br>
 						Venue: Level 3, Eastern Secret Garden<br>
 						Price: S$20 per person<br><br>
@@ -127,7 +143,7 @@ table {
 				<td><img src="assets/event2.jpeg" width="320" height="210"></td>
 				<td>
 					<h4>Stories in A Tea Cup</h4>
-					<label>Quantity: </label><input type="number" id="event1" class="qty" value="0" min="0" step="1" onchange="addEvent();">
+					<label>Quantity: </label><input type="number" id="event1" name="event_qty1" class="qty" value="0" min="0" step="1" onchange="addEvent();">
 					<p>Time: 1 Oct 19:00-21:00<br>
 						Venue: Level 2, Aroma Balcony<br>
 						Price: S$30 per person<br><br>
@@ -139,7 +155,9 @@ table {
 			</tr>
 		</table>
 	</div>
+
 	<div id="cart">
+		
 		<div id="summary">
 			<h3>Booking Summary</h3>
 			<table>
@@ -154,12 +172,12 @@ table {
 				<tr id="sect0">
 					<td><span id="item0"></span></td>
 					<td><span id="price0"></span></td>
-					<td><span id="qty0"></span></td>
+					<td><span id="qty0" ></span></td>
 				</tr>
 				<tr id="sect1">
 					<td><span id="item1"></span></td>
 					<td><span id="price1"></span></td>
-					<td><span id="qty1"></span></td>
+					<td><span id="qty1" ></span></td>
 				</tr>
 			</table>
 		</div>
@@ -167,6 +185,7 @@ table {
 			<p><strong>Total: S$ <input type="text" id="amount" value=0 onfocus="this.blur();"></strong></p>
 			<input type="submit" id="eventCheckout" value="Check Out" style="width: 80px;">
 		</div>
+		</form>
 	</div>
 </div>
 <footer>
