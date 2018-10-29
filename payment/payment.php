@@ -38,7 +38,9 @@ if (isset($_POST['event_qty0'])){
         $_SESSION['events_booked'] = array(
             'event1' => $qty1,
         );
-
+		$_SESSION['events_booked_email'] = array(
+			'Stories in A Tea Cup' => $qty1,
+		);   
     }
     else if ($qty1 == 0){
         // only first event got booked
@@ -64,7 +66,10 @@ if (isset($_POST['event_qty0'])){
                         </table>";
         $_SESSION['events_booked'] = array(
             'event0' => $qty0,
-        );        
+		); 
+		$_SESSION['events_booked_email'] = array(
+			'Mid-autumn Mooncake Festival' => $qty0,
+		);    
     }
     else {
         // both two events got booked
@@ -98,7 +103,11 @@ if (isset($_POST['event_qty0'])){
         $_SESSION['events_booked'] = array(
             'event0' => $qty0,
             'event1' => $qty1,
-        );         
+		);
+		$_SESSION['events_booked_email'] = array(
+			'Mid-autumn Mooncake Festival' => $qty0,
+			'Stories in A Tea Cup' => $qty1,
+		);          
     }
 
 }
@@ -146,6 +155,9 @@ else{
 
 	// will store orders as json format in database
 	$order_arr = array();
+
+	// for sending confirmation email
+	$order_arr_email = array();
 	for ($i = 0; $i < 10; $i++){
 		if($qtys[$i]>0){
 			$name_i = $product_name[$i];
@@ -153,6 +165,8 @@ else{
 			$price_i = $price[$i] * $qty_i;
 
 			$order_arr['food'.$i] = $qty_i;
+			// for sending confirmation email
+			$order_arr_email[$name_i] = $qty_i;
 
 			$total += $price_i;
 			$show_table = $show_table." <tr>
@@ -166,6 +180,7 @@ else{
 	// store orders in session
 	$_SESSION['food_ordered'] = $order_arr;
 	$_SESSION['trans_dollars'] = $total;
+	$_SESSION['food_ordered_email'] = $order_arr_email;
 
 	$show_table = $show_table." <tr><td></td><td></td><td></td></tr>
 								<tr>
@@ -289,8 +304,7 @@ input {
 </head>
 <body>
 <div id="title-left">
-	<img src="../assets/logo.png" id="logo" width="204" height="103">
-</div>
+	<a href="../home.html"><img src="../assets/logo.png" id="logo" width="204" height="103"></a></div>
 <div id="title-right">
 	<header>
 		<h1>Xiong Mao</h1>

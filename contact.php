@@ -22,6 +22,10 @@ else {
 		echo "alert('Contact failed. Please try again later.')";
 		echo '</script>';	}
 	else{
+		// send email
+		$msg = "Thank you, $cttName!\nWe have received your inquiry:\n$cttComment \nWe will get back you soon! \n";
+		mail("f31ee@localhost","We have received your inquiry!",$msg);    
+
 		echo '<script language="javascript">';
 		echo 'alert("You have sucessfully submitted an inquiry! A confirmation email has been sent to you.");';
 		//Enable automatic email
@@ -90,7 +94,7 @@ input, select, textarea {
 </head>
 <body>
 <div id="title-left">
-	<img src="assets/logo.png" id="logo" width="204" height="103">
+	<a href="home.html"><img src="assets/logo.png" id="logo" width="204" height="103"></a>
 </div>
 <div id="title-right">
 	<header>

@@ -22,12 +22,11 @@ CREATE TABLE contact (
 );
 
 CREATE TABLE users (
-    user_id INT NOT NULL AUTO_INCREMENT,
     user_firstName VARCHAR(20),
     user_lastName VARCHAR(20),
-    user_email VARCHAR(30) UNIQUE,
+    user_email VARCHAR(30) NOT NULL UNIQUE,
     user_password VARCHAR(50),
-    CONSTRAINT users_PK PRIMARY KEY (user_id)
+    CONSTRAINT users_PK PRIMARY KEY (user_email)
 );
 
 CREATE TABLE menu (
@@ -36,6 +35,36 @@ CREATE TABLE menu (
     product_price FLOAT,
     product_cat VARCHAR(20),
     CONSTRAINT menu_PK PRIMARY KEY (product_id)
+);
+
+CREATE TABLE foodDelivery_transactions (
+  trans_id INT(11) NOT NULL AUTO_INCREMENT,
+  trans_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  trans_dollars FLOAT NOT NULL,
+  user_email VARCHAR(20) NOT NULL,
+  delivery_name VARCHAR(20) NOT NULL,
+  delivery_phone VARCHAR(10) NOT NULL,
+  delivery_email VARCHAR(20) NOT NULL,
+  delivery_address VARCHAR(50) NOT NULL,
+  delivery_postcode VARCHAR(20) NOT NULL,
+  food_ordered VARCHAR(150) NOT NULL,
+  CONSTRAINT foodDelivery_transactions_PK PRIMARY KEY (trans_id),
+  CONSTRAINT foodDelivery_transactions_FK FOREIGN KEY (user_email) REFERENCES users(user_email)
+);
+
+CREATE TABLE eventBooking_transactions (
+  trans_id INT(10) NOT NULL AUTO_INCREMENT,
+  trans_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  trans_dollars FLOAT NOT NULL,
+  user_email VARCHAR(20) NOT NULL,
+  delivery_name VARCHAR(20) NOT NULL,
+  delivery_phone VARCHAR(10) NOT NULL,
+  delivery_email VARCHAR(20) NOT NULL,
+  delivery_address VARCHAR(50) NOT NULL,
+  delivery_postcode VARCHAR(20) NOT NULL,
+  events_booked VARCHAR(60) NOT NULL,
+  CONSTRAINT eventBooking_transactions_PK PRIMARY KEY (trans_id),
+  CONSTRAINT eventBooking_transactions_FK FOREIGN KEY (user_email) REFERENCES users(user_email)
 );
 
 INSERT INTO menu VALUES
