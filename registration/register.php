@@ -137,8 +137,7 @@ input, select {
 </head>
 <body>
 <div id="title-left">
-	<img src="../assets/logo.png" id="logo" width="204" height="103">
-</div>
+	<a href="../home.html"><img src="../assets/logo.png" id="logo" width="204" height="103"></a></div>
 <div id="title-right">
 	<header>
 		<h1>Xiong Mao</h1>

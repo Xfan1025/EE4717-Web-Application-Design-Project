@@ -36,7 +36,8 @@ else{
 		// assign session_id to Session as user_id
 		$_SESSION['user_id'] = session_id();
 		$_SESSION['user_email'] = $email;
-        $user_firstName = $row['user_firstName'];
+		$user_firstName = $row['user_firstName'];
+		$_SESSION['user_firstName'] = $user_firstName;
 		echo '<script language="javascript">';
 		echo "alert('Welcome $user_firstName!');";
 		echo "window.location.href = 'register.php';";

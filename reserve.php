@@ -28,9 +28,13 @@ else {
 		echo "alert('Reservation failed. Please try again later.')";
 		echo '</script>';	}
 	else{
+		// send email
+		$msg = "Thank you, $rsvName!\nYou have successfully reserved on:\n$rsvTime, $rsvDate \nWe look forward to seeing you soon! \n";
+		mail("f31ee@localhost","Reservation sucessfully!",$msg);    
+
 		echo '<script language="javascript">';
 		echo 'alert("You have sucessfully made a reservation! A confirmation email has been sent to you.");';
-		//Enable automatic email
+
 		echo "window.location.href = 'home.html';";
 		echo '</script>';
 	}
