@@ -11,7 +11,7 @@ if (empty($_POST['cttName']) || empty ($_POST['cttEmail']) || empty ($_POST['ctt
 else {
 	$cttSalulation = $_POST['cttSalulation'];
 	$cttName = $_POST['cttName'];
-	$cttEmail = $_POST[''];
+	$cttEmail = $_POST['cttEmail'];
 	$cttComment = $_POST['cttComment'];
 
 	$query = "INSERT INTO contact (ctt_salulation, ctt_name, ctt_email, ctt_comment) 
