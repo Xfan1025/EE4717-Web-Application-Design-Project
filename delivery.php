@@ -1,7 +1,6 @@
 <?php
 session_start();
-//Check account status: logged-in or not
-//Consider ttemporarily disabled for debug purpose
+
 if (!isset($_SESSION['user_id'])){
     echo '<script language="javascript">';
     echo "alert('Members only! Please log in to access the page.');";
@@ -108,7 +107,6 @@ table {
 	margin: auto;
 }    
 </style>
-
 <script>
 	var price0 = "<?php echo $price[0]; ?>";
 	var price1 = "<?php echo $price[1]; ?>";
