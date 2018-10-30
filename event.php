@@ -1,7 +1,6 @@
 <?php
 session_start();
 //Check account status: logged-in or not
-//Consider ttemporarily disabled for debug purpose
 if (!isset($_SESSION['user_id'])){
     echo '<script language="javascript">';
     echo "alert('Members only! Please log in to access the page.');";
@@ -17,17 +16,14 @@ if (!isset($_SESSION['user_id'])){
 <link rel="stylesheet" href="xiongmao.css">
 <script>
 function checkInput(){
-	// check qty
-	// prevent form submission if both are 0
+	//Prevent form submission if quantity is invalid or no products are selected
 	var qty0 = document.getElementById("event0").value;
 	var qty1 = document.getElementById("event1").value;
-	// alert(qty0);
+
 	if ((qty0==0) && (qty1==0)) {
 		alert("You did not book any event!");
-
 		return false;
 	}
-
 }
 </script>
 <style>
@@ -155,9 +151,7 @@ table {
 			</tr>
 		</table>
 	</div>
-
-	<div id="cart">
-		
+	<div id="cart">	
 		<div id="summary">
 			<h3>Booking Summary</h3>
 			<table>

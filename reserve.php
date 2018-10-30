@@ -19,7 +19,6 @@ else {
 	$rsvPax = $_POST['rsvPax'];
 	$rsvComment = $_POST['rsvComment'];
 
-	//TODO: Check for available slots
 	$query = "INSERT INTO reserve (rsv_salulation, rsv_name, rsv_phone, rsv_email, rsv_date, rsv_time, rsv_pax, rsv_comment) 
 	VALUES ('$rsvSalulation', '$rsvName', '$rsvPhone', '$rsvEmail', '$rsvDate', '$rsvTime', '$rsvPax', '$rsvComment')";
 	$result = mysqli_query($con, $query);
@@ -28,13 +27,12 @@ else {
 		echo "alert('Reservation failed. Please try again later.')";
 		echo '</script>';	}
 	else{
-		// send email
+		//Send email
 		$msg = "Thank you, $rsvName!\nYou have successfully reserved on:\n$rsvTime, $rsvDate \nWe look forward to seeing you soon! \n";
 		mail("f31ee@localhost","Reservation sucessfully!",$msg);    
 
 		echo '<script language="javascript">';
 		echo 'alert("You have sucessfully made a reservation! A confirmation email has been sent to you.");';
-
 		echo "window.location.href = 'home.html';";
 		echo '</script>';
 	}

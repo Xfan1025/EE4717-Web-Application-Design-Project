@@ -1,4 +1,32 @@
 /* Database SQL record */
+CREATE TABLE users (
+    user_firstName VARCHAR(20),
+    user_lastName VARCHAR(20),
+    user_email VARCHAR(30) NOT NULL UNIQUE,
+    user_password VARCHAR(50),
+    CONSTRAINT users_PK PRIMARY KEY (user_email)
+);
+
+CREATE TABLE menu (
+    product_id INT NOT NULL,
+    product_name VARCHAR(50),
+    product_price FLOAT,
+    product_cat VARCHAR(20),
+    CONSTRAINT menu_PK PRIMARY KEY (product_id)
+);
+
+INSERT INTO menu VALUES
+    (0, "Sliced Beef with Black Pepper Sauce", 20, "meat"),
+    (1, "Double Cooked Pork with Chinese Leek", 16, "meat"),
+    (2, "Spicy Chicken", 18, "meat"),
+    (3, "Fish Filets in Hot Chili Oil", 22, "meat"),
+    (4, "Egg Plant with Minced Chicken and Sichuan Chilli Sauce", 10, "vege"),
+    (5, "Lettuce in Oyster Sauce", 8, "vege"),
+    (6, "Bai Mu Dan White Peony Tea", 5, "drink"),
+    (7, "Oolong Tea", 4.5, "drink"),
+    (8, "Sweet-sour Plum Juice", 3.5, "drink"),
+    (9, "Traditional Chinese Liquor", 11, "drink");
+
 CREATE TABLE reserve (
     rsv_id INT NOT NULL AUTO_INCREMENT,
     rsv_salulation CHAR(3),
@@ -19,22 +47,6 @@ CREATE TABLE contact (
     ctt_email VARCHAR(30),
     ctt_comment VARCHAR(100),
     CONSTRAINT contact_PK PRIMARY KEY (ctt_id)
-);
-
-CREATE TABLE users (
-    user_firstName VARCHAR(20),
-    user_lastName VARCHAR(20),
-    user_email VARCHAR(30) NOT NULL UNIQUE,
-    user_password VARCHAR(50),
-    CONSTRAINT users_PK PRIMARY KEY (user_email)
-);
-
-CREATE TABLE menu (
-    product_id INT NOT NULL,
-    product_name VARCHAR(50),
-    product_price FLOAT,
-    product_cat VARCHAR(20),
-    CONSTRAINT menu_PK PRIMARY KEY (product_id)
 );
 
 CREATE TABLE foodDelivery_transactions (
@@ -66,15 +78,3 @@ CREATE TABLE eventBooking_transactions (
   CONSTRAINT eventBooking_transactions_PK PRIMARY KEY (trans_id),
   CONSTRAINT eventBooking_transactions_FK FOREIGN KEY (user_email) REFERENCES users(user_email)
 );
-
-INSERT INTO menu VALUES
-    (0, "Sliced Beef with Black Pepper Sauce", 20, "meat"),
-    (1, "Double Cooked Pork with Chinese Leek", 16, "meat"),
-    (2, "Spicy Chicken", 18, "meat"),
-    (3, "Fish Filets in Hot Chili Oil", 22, "meat"),
-    (4, "Egg Plant with Minced Chicken and Sichuan Chilli Sauce", 10, "vege"),
-    (5, "Lettuce in Oyster Sauce", 8, "vege"),
-    (6, "Bai Mu Dan White Peony Tea", 5, "drink"),
-    (7, "Oolong Tea", 4.5, "drink"),
-    (8, "Sweet-sour Plum Juice", 3.5, "drink"),
-    (9, "Traditional Chinese Liquor", 11, "drink");
