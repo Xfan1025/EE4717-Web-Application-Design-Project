@@ -1,20 +1,15 @@
 <?php
 session_start();
 
-
-
 if (isset($_POST['event_qty0'])){
-    // echo "Event booking checkout for ";
     $qty0 = $_POST['event_qty0'];
     $qty1 = $_POST['event_qty1'];
     $user_email = $_SESSION['user_email'];
-	
-	// print_r($_POST);
 
     $total = 20 * $qty0 + 30 * $qty1;
     $_SESSION['trans_dollars'] = $total;
     if ($qty0 == 0){
-        // only second event got booked
+        //Only second event is booked
         $show_table = " <h2>Event Booking Summary for $user_email</h2>
                         <table>
                             <tr>
@@ -43,7 +38,7 @@ if (isset($_POST['event_qty0'])){
 		);   
     }
     else if ($qty1 == 0){
-        // only first event got booked
+        //Only first event is booked
         $show_table = " <h2>Event Booking Summary for $user_email</h2>
                         <table>
                             <tr>
@@ -72,7 +67,7 @@ if (isset($_POST['event_qty0'])){
 		);    
     }
     else {
-        // both two events got booked
+        //Both events are booked
         $show_table = " <h2>Event Booking Summary for $user_email</h2>
                         <table>
                             <tr>
@@ -113,7 +108,7 @@ if (isset($_POST['event_qty0'])){
 }
 
 else if (isset($_POST['delivery0'])){
-	// payment for delivery
+	//Payment for delivery
 	include "../dbconnect.php";
 	$user_email = $_SESSION['user_email'];
 	$query = array("", "", "", "", "", "", "", "", "", "");
@@ -122,14 +117,10 @@ else if (isset($_POST['delivery0'])){
 	for ($i = 0; $i < 10; $i++){
 		$query[$i] = "select * from menu where product_id = ".$i;
 		$result = $con -> query($query[$i]) -> fetch_assoc();
-		// echo json_encode($result);
 		$price[$i] = $result['product_price'];
 		$product_name[$i] = $result['product_name'];
 	}
-    // print_r($_POST);
-	// obtain quantities
-	// the form submission is hardcoded - -||
-	// to be implement as vector/array in future if business grows ;)
+	//To be implement as vector/array in future if business grows
 
 	$qty0 = $_POST['delivery0'];
     $qty1 = $_POST['delivery1'];
@@ -153,10 +144,10 @@ else if (isset($_POST['delivery0'])){
 					</tr>";
 	$total = 0;
 
-	// will store orders as json format in database
+	//Store orders as json format in database
 	$order_arr = array();
 
-	// for sending confirmation email
+	//Send email
 	$order_arr_email = array();
 	for ($i = 0; $i < 10; $i++){
 		if($qtys[$i]>0){
@@ -165,7 +156,6 @@ else if (isset($_POST['delivery0'])){
 			$price_i = $price[$i] * $qty_i;
 
 			$order_arr['food'.$i] = $qty_i;
-			// for sending confirmation email
 			$order_arr_email[$name_i] = $qty_i;
 
 			$total += $price_i;
@@ -177,7 +167,7 @@ else if (isset($_POST['delivery0'])){
 		}
 
 	}
-	// store orders in session
+	//Store orders in session
 	$_SESSION['food_ordered'] = $order_arr;
 	$_SESSION['trans_dollars'] = $total;
 	$_SESSION['food_ordered_email'] = $order_arr_email;
@@ -197,9 +187,6 @@ else {
 	echo "window.location.href = '../home.html';";
 	echo '</script>';
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -208,8 +195,6 @@ else {
 <title>Xiong Mao - Payment</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../xiongmao.css">
-<!-- <script src="../menu.js"></script> -->
-
 <style>
 #header {
 		text-align: center;
@@ -221,7 +206,6 @@ else {
 	display: inline-block;
 	height: auto;
 }
-/* Create three equal columns that floats next to each other */
 #column-left { 
 	width: 400px;
 	min-height: 320px;
@@ -270,7 +254,7 @@ input {
 </style>
 <script>
 	function checkInput(){
-        // check name
+        //Check name
 		var name = document.getElementById("payName");
 		var nameRegExp = /^[A-Za-z]+\s?[A-Za-z]*$/;
 		var nameValid = nameRegExp.test(name.value);
@@ -281,7 +265,7 @@ input {
 			return false;
 		}
 
-        // check phone
+        //Check phone
 		var phone = document.getElementById("payPhone");
 		var phoneRegExp = /^\d+$/;
 		var phoneValid = phoneRegExp.test(phone.value);
@@ -292,7 +276,7 @@ input {
 			return false;
 		}
 
-        // check postcode
+        //Check postcode
 		var postcode = document.getElementById("payPostcode");
 		var postRegExp = /^\d+$/;
 		var postValid = postRegExp.test(postcode.value);
@@ -327,7 +311,6 @@ input {
 </div>
 <div id="wrapper">
 	<div id="column-left">
-
         <?php echo $show_table; ?>
 	</div>
 	<div id="column-center">
