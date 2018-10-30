@@ -43,7 +43,7 @@ input, select, textarea {
 }	             
 </style>
 <script>
-	function checkInput(){
+	function checkInput(){ //Form validation
 		var name = document.getElementById("cttName");
 	    var nameRegExp = /^[A-Za-z]+\s?[A-Za-z]*$/;
 		var nameValid = nameRegExp.test(name.value);

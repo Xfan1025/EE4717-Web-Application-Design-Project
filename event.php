@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 //Check account status: logged-in or not
 if (!isset($_SESSION['user_id'])){
     echo '<script language="javascript">';
@@ -8,6 +9,7 @@ if (!isset($_SESSION['user_id'])){
     echo '</script>';
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +17,8 @@ if (!isset($_SESSION['user_id'])){
 <meta charset="utf-8">
 <link rel="stylesheet" href="xiongmao.css">
 <script>
-function checkInput(){
-	//Prevent form submission if quantity is invalid or no products are selected
+function checkInput(){ //Form validation
+	//Prevent form submission if quantity is invalid or no events are selected
 	var qty0 = document.getElementById("event0").value;
 	var qty1 = document.getElementById("event1").value;
 

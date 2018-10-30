@@ -1,6 +1,7 @@
 <?php 
 session_start();
-// check if logged in
+
+//Check if the user has logged in
 if (isset($_SESSION['user_id'])){
     echo '<script language="javascript">';
     echo "alert('You have sucessfully logged out.');";

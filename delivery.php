@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+//Check account status: logged-in or not
 if (!isset($_SESSION['user_id'])){
     echo '<script language="javascript">';
     echo "alert('Members only! Please log in to access the page.');";
@@ -13,10 +14,12 @@ $query = array("", "", "", "", "", "", "", "", "", "");
 $price = array("", "", "", "", "", "", "", "", "", "");
 for ($i = 0; $i < 10; $i++){
 	$query[$i] = "select product_price from menu where product_id = ".$i;
+	//Dynamically retrieve price from database
 	$result = $con -> query($query[$i]) -> fetch_assoc();
 	$price[$i] = $result['product_price'];
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,7 +122,8 @@ table {
 	var price8 = "<?php echo $price[8]; ?>";
 	var price9 = "<?php echo $price[9]; ?>";
 
-	function foldMeat() { //Not work for default with "display: none"
+    //Control section fold/unfold
+	function foldMeat() {
     	var x = document.getElementById("meat");
 		var y = document.getElementById("btnMeat");
     	if (x.style.display === "none") {
@@ -157,8 +161,6 @@ table {
 	}
 
 	function checkInput(){
-		// check qty
-		// prevent form submission if nothing got ordered
 		var qty0 = document.getElementById("delivery0").value;
 		var qty1 = document.getElementById("delivery1").value;
 		var qty2 = document.getElementById("delivery2").value;
@@ -169,13 +171,12 @@ table {
 		var qty7 = document.getElementById("delivery7").value;
 		var qty8 = document.getElementById("delivery8").value;
 		var qty9 = document.getElementById("delivery9").value;
-
+		
+		//Prevent form submission if nothing is ordered
 		if ((qty0+qty1+qty2+qty3+qty4+qty5+qty6+qty7+qty8+qty9)==0) {
 			alert("You did not order anything!");
-
 			return false;
 		}
-
 	}
 </script>
 <script src="delivery.js"></script>

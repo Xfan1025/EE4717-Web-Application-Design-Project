@@ -1,3 +1,4 @@
+//Prototype for product
 function Product(item, price, qty){
     this.item = item;
     this.price = price;
@@ -18,7 +19,7 @@ var productList = [
 ];
 
 function addProduct(){
-    checkQty();
+    checkQty(); //Validate quantity
     for (var i = 0; i < 10; i++){
         added = document.getElementById("delivery" + i).value;
         var item = document.getElementById("item" + i);
@@ -35,11 +36,8 @@ function addProduct(){
         else {
             sect.style.display = "none";
             productList[i].qty = 0;
-            //item.innerHTML = "";
-            //price.innerHTML = "";
-            //qty.innerHTML = "";
         }
-        compute(productList);
+        compute(productList); //Compute total amount
     }
 }
 
