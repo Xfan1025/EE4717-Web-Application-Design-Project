@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// print_r($_POST);
+
 
 if (isset($_POST['event_qty0'])){
     // echo "Event booking checkout for ";
@@ -112,7 +112,7 @@ if (isset($_POST['event_qty0'])){
 
 }
 
-else{
+else if (isset($_POST['delivery0'])){
 	// payment for delivery
 	include "../dbconnect.php";
 	$user_email = $_SESSION['user_email'];
@@ -191,10 +191,13 @@ else{
 								</table>";
 
 }
-// $qty0 = $_POST['event_qty0'];
-// $qty1 = $_POST['event_qty1'];
+else {
+	echo '<script language="javascript">';
+	echo 'alert("You are not allowed to access this page unless you place an order!");';
+	echo "window.location.href = '../home.html';";
+	echo '</script>';
+}
 
-// echo $_SESSION['user_email'];
 
 
 ?>
