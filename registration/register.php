@@ -1,8 +1,7 @@
-<?php // Account Page
+<?php
 session_start();
 include "../dbconnect.php";
 if (empty($_POST['user_firstName']) ) {
-	// no post form
 }
 else {
 	$firstName = $_POST['user_firstName'];
@@ -24,7 +23,7 @@ else {
 
 		if (!$result) {
 			echo '<script language="javascript">';
-			echo "alert('The E-mail $email has already been registered. Login instead.')"; // currenyly any insertion error will lead to this. maybe fix later
+			echo "alert('The E-mail $email has already been registered. Login instead.')"; 
 			echo '</script>';	}
 
 		else{
@@ -35,7 +34,7 @@ else {
 	}
 }
 
-// if not logged in
+//If not logged in
 if (!isset($_SESSION['user_id'])){
 	$show_div = '
 				<h2>Login</h2>
@@ -47,7 +46,7 @@ if (!isset($_SESSION['user_id'])){
 						<input id="logSubmit" type="submit" value="Submit">
 				</form>';
 }
-// if logged in 
+//If logged in 
 else{
 	$email = $_SESSION['user_email'];
 	$show_div = "
@@ -58,7 +57,6 @@ else{
 				</form>";
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -124,8 +122,6 @@ input, select {
 			return false;
 		}
 	}
-	
-
 </script>
 </head>
 <body>
