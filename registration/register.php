@@ -1,14 +1,8 @@
-<?php // register.php
-
-// ToDo:
-// 1. add checking for already registered user email
-// 2. 
+<?php // Account Page
 session_start();
 include "../dbconnect.php";
-
 if (empty($_POST['user_firstName']) ) {
 	// no post form
-
 }
 else {
 	$firstName = $_POST['user_firstName'];
@@ -16,7 +10,6 @@ else {
 	$email = $_POST['user_email'];
 	$password = $_POST['user_password'];
 	$password2 = $_POST['user_password_confirm'];
-
 
 	if ($password != $password2) {
 		echo '<script language="javascript">';
@@ -64,7 +57,6 @@ else{
 					<input type='submit' value='Logout'> 
 				</form>";
 }
-
 ?>
 
 
@@ -131,6 +123,7 @@ input, select {
 			lname.select();
 			return false;
 		}
+	}
 	
 
 </script>
