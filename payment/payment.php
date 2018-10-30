@@ -144,7 +144,7 @@ else if (isset($_POST['delivery0'])){
 					</tr>";
 	$total = 0;
 
-	//Store orders as json format in database
+	//Store orders as JSON format in database
 	$order_arr = array();
 
 	//Send email
@@ -165,7 +165,6 @@ else if (isset($_POST['delivery0'])){
 										<td>S$$price_i</td>
 										</tr>";
 		}
-
 	}
 	//Store orders in session
 	$_SESSION['food_ordered'] = $order_arr;
@@ -253,7 +252,7 @@ input {
 }
 </style>
 <script>
-	function checkInput(){
+	function checkInput(){ //Form validation
         //Check name
 		var name = document.getElementById("payName");
 		var nameRegExp = /^[A-Za-z]+\s?[A-Za-z]*$/;

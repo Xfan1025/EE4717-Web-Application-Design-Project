@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../dbconnect.php";
+
 if (empty($_POST['user_firstName']) ) {
 }
 else {
@@ -10,18 +11,18 @@ else {
 	$password = $_POST['user_password'];
 	$password2 = $_POST['user_password_confirm'];
 
-	if ($password != $password2) {
+	if ($password != $password2) { //Password not match
 		echo '<script language="javascript">';
 		echo 'alert("Sorry, password does not match.")';
 		echo '</script>';
 		}
 	else {
-		$password = md5($password);
+		$password = md5($password); //Encryption
 		$query = "INSERT INTO users (user_firstName, user_lastName, user_email, user_password) 
 				VALUES ('$firstName', '$lastName', '$email', '$password')";
 		$result = mysqli_query($con, $query);
 
-		if (!$result) {
+		if (!$result) { //If existing email is used
 			echo '<script language="javascript">';
 			echo "alert('The E-mail $email has already been registered. Login instead.')"; 
 			echo '</script>';	}
@@ -101,7 +102,7 @@ input, select {
 }	             
 </style>
 <script>
-	function checkInput(){
+	function checkInput(){ //Form validation
 		var fname = document.getElementById("regFname");
 	    var nameRegExp = /^[A-Za-z]+$/;
 		var nameValid = nameRegExp.test(fname.value);

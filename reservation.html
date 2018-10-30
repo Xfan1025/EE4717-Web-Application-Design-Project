@@ -36,6 +36,7 @@
 }
 h2 {
 	color:#FF476F;
+	text-align: center;
 }
 form {
 	line-height: 150%;
@@ -54,7 +55,8 @@ input, select, textarea {
 }	             
 </style> 
 <script>
-	function checkInput(){
+	function checkInput(){ //Form validation
+		//Check name
 		var name = document.getElementById("rsvName");
 	    var nameRegExp = /^[A-Za-z]+\s?[A-Za-z]*$/;
 		var nameValid = nameRegExp.test(name.value);
@@ -64,7 +66,7 @@ input, select, textarea {
 			name.select();
 			return false;
 		}
-
+		//Check phone
 		var phone = document.getElementById("rsvPhone");
 	    var phoneRegExp = /^\d+$/;
 		var phoneValid = phoneRegExp.test(phone.value);
@@ -74,7 +76,7 @@ input, select, textarea {
 			phone.select();
 			return false;
 		}
-
+		//Check date
 		var date = document.getElementById("rsvDate");
 		var dateCurrent = new Date();
 		var dateSelect = new Date(date.value);
@@ -84,7 +86,7 @@ input, select, textarea {
 			date.select();
 			return false;
 		}
-
+		//Check pax
 		var pax = document.getElementById("rsvPax");
   	    if ((pax.value<=0)||(pax.value>8)||(pax.value%1!=0)){
 			alert("The age is not valid.\n" + "It must be a positive integer between 1-8.");
@@ -118,7 +120,7 @@ input, select, textarea {
 		<img src="assets/headerReservation.png" width="1400" height="300">
 	</div>
 	<div id="notice">
-		<h2 align="center">Reservation Notice</h2>
+		<h2>Reservation Notice</h2>
 		<p>Please read the following terms and conditions berfore making a reservation.</p>
 		<ul>
 			<li>Information with asterisk is mandatory in the form.</li>
@@ -132,7 +134,7 @@ input, select, textarea {
 		<p>By clicking submission button in reservation form, you acknowledge that you have read, understood and accepted the terms and conditions above.</p>
 	</div>
 	<div id="form">
-		<h2 align="center">Reservation Form</h2>
+		<h2>Reservation Form</h2>
 		<form method="post" action="reserve.php" onsubmit="return checkInput();" id="info">
 			<div id="left">
 				<label for="rsvSalulation">* Salulation:</label>

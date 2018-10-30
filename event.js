@@ -1,3 +1,4 @@
+//Prototype for event
 function Event(item, price, qty){
     this.item = item;
     this.price = price;
@@ -10,7 +11,7 @@ var eventList = [
 ];
 
 function addEvent(){
-    checkQty();
+    checkQty(); //Validate quantity
     for (var i = 0; i < 2; i++){
         added = document.getElementById("event" + i).value;
         var item = document.getElementById("item" + i);
@@ -27,11 +28,8 @@ function addEvent(){
         else {
             sect.style.display = "none";
             eventList[i].qty = 0;
-            //item.innerHTML = "";
-            //price.innerHTML = "";
-            //qty.innerHTML = "";
         }
-        compute(eventList);
+        compute(eventList); //Compute total amount
     }
 }
 
