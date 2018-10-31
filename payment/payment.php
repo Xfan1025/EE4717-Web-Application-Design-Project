@@ -106,7 +106,6 @@ if (isset($_POST['event_qty0'])){
     }
 
 }
-
 else if (isset($_POST['delivery0'])){
 	//Payment for delivery
 	include "../dbconnect.php";
@@ -147,7 +146,7 @@ else if (isset($_POST['delivery0'])){
 	//Store orders as JSON format in database
 	$order_arr = array();
 
-	//Send email
+	//For sending email
 	$order_arr_email = array();
 	for ($i = 0; $i < 10; $i++){
 		if($qtys[$i]>0){
