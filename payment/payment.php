@@ -120,7 +120,7 @@ else if (isset($_POST['delivery0'])){
 		$price[$i] = $result['product_price'];
 		$product_name[$i] = $result['product_name'];
 	}
-	//To be implement as vector/array in future if business grows
+	
 
 	$qty0 = $_POST['delivery0'];
     $qty1 = $_POST['delivery1'];
