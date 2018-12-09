@@ -1,7 +1,6 @@
 <?php
 session_start();
-
-//Check account status: logged-in or not
+//check account status: logged-in or not
 if (!isset($_SESSION['user_id'])){
     echo '<script language="javascript">';
     echo "alert('Members only! Please log in to access the page.');";
@@ -15,86 +14,9 @@ if (!isset($_SESSION['user_id'])){
 <head>
 <title>Xiong Mao - Event</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="xiongmao.css">
-<script>
-function checkInput(){ //Form validation
-	//Prevent form submission if quantity is invalid or no events are selected
-	var qty0 = document.getElementById("event0").value;
-	var qty1 = document.getElementById("event1").value;
-
-	if ((qty0==0) && (qty1==0)) {
-		alert("You did not book any event!");
-		return false;
-	}
-}
-</script>
-<style>
-#header {
-	text-align: center;
-	vertical-align: middle;
-}
-#booking {
-	text-align: center;
-}
-#event {
-	height: 600px;
-	width: 850px;
-	text-align: center;
-	vertical-align: top;
-	margin-right: 10px;
-	display: inline-block;
-}
-#cart {
-	height: 600px;
-	width: 500px;
-	text-align: center;
-	vertical-align: top;
-	display: inline-block;
-}
-#summary {
-	height: 450px;
-	text-align: center;
-	vertical-align: top;
-}
-#total {
-	height: 50px;
-	vertical-align: bottom;
-}
-#info td {
-	height: 200px;
-	text-align: left;
-	vertical-align: center;
-	padding: 0px 10px;
-}
-#info input {
-	width: 30px;
-} 
-#cart td, th {
-	padding-bottom: 10px;
-} 
-#amount {
-    background-color: transparent;
-    border: 0px solid;
-    width: 15%;
-	color: white;
-	font-weight: bold;
-	font-size: 100%;
-	text-align: center;
-}
-h3 {
-	padding:5px;
-	color: black;
-	background-color: #FF476F;
-}
-h4 {
-	color: #FF476F;
-}
-table {
-	width: 95%; 
-	margin: auto;
-}    
-</style>
-<script src="event.js"></script>
+<link rel="stylesheet" href="css/xiongmao.css">
+<link rel="stylesheet" href="css/event.css">
+<script src="js/event.js"></script>
 </head>
 <body>
 <div id="title-left">

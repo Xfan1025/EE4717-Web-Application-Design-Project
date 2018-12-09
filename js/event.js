@@ -5,6 +5,7 @@ function Event(item, price, qty){
     this.qty = qty;
 }
 
+// hardcoded due to time consideration
 var eventList = [
     new Event("Mid-autumn Mooncake Festival", 20, 0),
     new Event("Stories in A Tea Cup", 30, 0)
@@ -55,3 +56,13 @@ function compute(eventList){
 }
 
 
+function checkInput(){ //Form validation
+	//Prevent form submission if quantity is invalid or no events are selected
+	var qty0 = document.getElementById("event0").value;
+	var qty1 = document.getElementById("event1").value;
+
+	if ((qty0==0) && (qty1==0)) {
+		alert("You did not book any event!");
+		return false;
+	}
+}

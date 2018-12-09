@@ -192,7 +192,7 @@ else {
 <head>
 <title>Xiong Mao - Payment</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="../xiongmao.css">
+<link rel="stylesheet" href="../css/xiongmao.css">
 <style>
 #header {
 		text-align: center;

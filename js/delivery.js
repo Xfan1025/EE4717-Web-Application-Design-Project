@@ -1,4 +1,15 @@
-//Prototype for product
+// hardcoded to be 10 items for demo purpose with time consideration
+var price0 = "<?php echo $price[0]; ?>";
+var price1 = "<?php echo $price[1]; ?>";
+var price2 = "<?php echo $price[2]; ?>";
+var price3 = "<?php echo $price[3]; ?>";
+var price4 = "<?php echo $price[4]; ?>";
+var price5 = "<?php echo $price[5]; ?>";
+var price6 = "<?php echo $price[6]; ?>";
+var price7 = "<?php echo $price[7]; ?>";
+var price8 = "<?php echo $price[8]; ?>";
+var price9 = "<?php echo $price[9]; ?>";
+
 function Product(item, price, qty){
     this.item = item;
     this.price = price;
@@ -62,4 +73,59 @@ function compute(productList){
     total.value = temp; 
 }
 
+//Control section fold/unfold
+function foldMeat() {
+	var x = document.getElementById("meat");
+	var y = document.getElementById("btnMeat");
+	if (x.style.display === "none") {
+		x.style.display = "block";
+		y.value = "-";
+	} 
+	else {
+		x.style.display = "none";
+		y.value = "+";
+	}
+}
+function foldVege() {
+	var x = document.getElementById("vege");
+	var y = document.getElementById("btnVege");
+	if (x.style.display === "none") {
+		x.style.display = "block";
+		y.value = "-";
+	} 
+	else {
+		x.style.display = "none";
+		y.value = "+";
+	}
+}
+function foldDrink() {
+	var x = document.getElementById("drink");
+	var y = document.getElementById("btnDrink");
+	if (x.style.display === "none") {
+		x.style.display = "block";
+		y.value = "-";
+	} 
+	else {
+		x.style.display = "none";
+		y.value = "+";
+	}
+}
 
+function checkInput(){
+	var qty0 = document.getElementById("delivery0").value;
+	var qty1 = document.getElementById("delivery1").value;
+	var qty2 = document.getElementById("delivery2").value;
+	var qty3 = document.getElementById("delivery3").value;
+	var qty4 = document.getElementById("delivery4").value;
+	var qty5 = document.getElementById("delivery5").value;
+	var qty6 = document.getElementById("delivery6").value;
+	var qty7 = document.getElementById("delivery7").value;
+	var qty8 = document.getElementById("delivery8").value;
+	var qty9 = document.getElementById("delivery9").value;
+	
+	//Prevent form submission if nothing is ordered
+	if ((qty0+qty1+qty2+qty3+qty4+qty5+qty6+qty7+qty8+qty9)==0) {
+		alert("You did not order anything!");
+		return false;
+	}
+}
