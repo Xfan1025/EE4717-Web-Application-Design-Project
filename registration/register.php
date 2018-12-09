@@ -160,7 +160,7 @@ input, select {
   				<label for="regFname">* First Name:</label>
   				<input type="text" id="regFname" name="user_firstName" required><br>
 				<label for="regLname">* Last Name:</label>
-  				<input type="text" id="regLname" name="user_lastName" required><br>
+  				<input type="text" id="regLname" name="user_lastName" required><br>				
 				<label for="regEmail">* E-mail:</label>
   				<input type="email" id="regEmail" name="user_email" required><br>
 				<label for="regPassword">* Password:</label>
